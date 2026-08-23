@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="ClientFlow.Api/ClientFlow.Api.csproj" />
+  <Project Path="ClientFlow.Application/ClientFlow.Application.csproj" />
+  <Project Path="ClientFlow.Domain/ClientFlow.Domain.csproj" />
+  <Project Path="ClientFlow.Infrastructure/ClientFlow.Infrastructure.csproj" />
+  <Project Path="ClientFlow.Tests/ClientFlow.Tests.csproj" />
+</Solution>
