@@ -1,2 +1,5 @@
+CLIENTFLOW - CHANGE HISTORY
+===========================
+
 [2026-08-23]
  - Initial project structure
