@@ -1,4 +1,7 @@
 <Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="ChangeHistory.txt" />
+  </Folder>
   <Project Path="ClientFlow.Api/ClientFlow.Api.csproj" />
   <Project Path="ClientFlow.Application/ClientFlow.Application.csproj" />
   <Project Path="ClientFlow.Domain/ClientFlow.Domain.csproj" />
