@@ -7,4 +7,4 @@ CLIENTFLOW - CHANGE HISTORY
 		'.NETFramework,Version=v4.7.2'')
 
 [2026-08-23]
- - Initial project structure
+	- Initial project structure
