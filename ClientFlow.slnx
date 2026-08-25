@@ -6,5 +6,5 @@
   <Project Path="ClientFlow.Application/ClientFlow.Application.csproj" />
   <Project Path="ClientFlow.Domain/ClientFlow.Domain.csproj" />
   <Project Path="ClientFlow.Infrastructure/ClientFlow.Infrastructure.csproj" />
-  <Project Path="ClientFlow.Tests/ClientFlow.Tests.csproj" />
+  <Project Path="ClientFlow.Tests/ClientFlow.Tests.csproj" Id="a23a6425-b457-4efe-a15f-602c9f4fadc4" />
 </Solution>

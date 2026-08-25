@@ -1,5 +1,10 @@
 CLIENTFLOW - CHANGE HISTORY
 ===========================
 
+[2026-08-25]
+	- added new ClientFlow.Tests with .net10.0 TargetFramework
+		to fix ('It cannot be referenced by a project that targets
+		'.NETFramework,Version=v4.7.2'')
+
 [2026-08-23]
  - Initial project structure
