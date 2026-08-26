@@ -1,6 +1,9 @@
 CLIENTFLOW - CHANGE HISTORY
 ===========================
 
+[2026-08-26]
+	- add 'Directory.Build.props' for shared MSBuild properties
+
 [2026-08-25]
 	- added new ClientFlow.Tests with .net10.0 TargetFramework
 		to fix ('It cannot be referenced by a project that targets
