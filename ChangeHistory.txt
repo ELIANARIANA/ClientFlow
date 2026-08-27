@@ -1,6 +1,9 @@
 CLIENTFLOW - CHANGE HISTORY
 ===========================
 
+[2026-08-27]
+	- add Customer entity to ClientFlow.Domain
+
 [2026-08-26]
 	- add 'Directory.Build.props' for shared MSBuild properties
 
