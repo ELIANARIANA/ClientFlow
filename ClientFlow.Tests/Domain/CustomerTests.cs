@@ -12,7 +12,7 @@ namespace ClientFlow.Tests.Domain
 			var customer = new ClientFlow.Domain.Entities.Customer
 			{
 				Id          = Guid.NewGuid(),
-				FirtName    = "John",
+				FirstName   = "John",
 				LastName    = "Doe",
 				Email       = "john.doe@example.com",
 				Phone       = "123-456-7890",
@@ -23,7 +23,7 @@ namespace ClientFlow.Tests.Domain
 
 			// Assert
 			Assert.NotEqual(Guid.Empty            , customer.Id         );
-			Assert.Equal   ("John"                , customer.FirtName   );
+			Assert.Equal   ("John"                , customer.FirstName  );
 			Assert.Equal   ("Doe"                 , customer.LastName   );
 			Assert.Equal   ("john.doe@example.com", customer.Email      );
 			Assert.Equal   ("123-456-7890"        , customer.Phone      );
@@ -38,7 +38,7 @@ namespace ClientFlow.Tests.Domain
 			var customer = new ClientFlow.Domain.Entities.Customer
 			{ 
 				Id        = Guid.NewGuid(),
-				FirtName  = "John",
+				FirstName = "John",
 				LastName  = "Doe",
 				Email     = "john.doe@example.com",
 				CreatedAt = DateTimeOffset.UtcNow,
@@ -46,7 +46,7 @@ namespace ClientFlow.Tests.Domain
 
 			// Assert
 			Assert.NotEqual(Guid.Empty            , customer.Id       );
-			Assert.Equal   ("John"                , customer.FirtName );
+			Assert.Equal   ("John"                , customer.FirstName);
 			Assert.Equal   ("Doe"                 , customer.LastName );
 			Assert.Equal   ("john.doe@example.com", customer.Email    );
 			Assert.NotEqual(default               , customer.CreatedAt);
