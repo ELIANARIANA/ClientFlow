@@ -31,5 +31,28 @@ namespace ClientFlow.Tests.Domain
             Assert.NotEqual(default               , customer.CreatedAt  );
             Assert.NotEqual(default               , customer.UpdatedAt  );
         }
+
+        [Fact]
+        public void CreateCustomerWithOnlyRequiredData()
+        {
+            var customer = new ClientFlow.Domain.Entities.Customer
+            {
+                Id        = Guid.NewGuid(),
+                FirtName  = "John",
+                LastName  = "Doe",
+                Email     = "john.doe@example.com",
+                CreatedAt = DateTimeOffset.UtcNow,
+            };
+
+            // Assert
+            Assert.NotEqual(Guid.Empty            , customer.Id       );
+            Assert.Equal   ("John"                , customer.FirtName );
+            Assert.Equal   ("Doe"                 , customer.LastName );
+            Assert.Equal   ("john.doe@example.com", customer.Email    );
+            Assert.NotEqual(default               , customer.CreatedAt);
+            Assert.Null(customer.Phone      );
+            Assert.Null(customer.CompanyName);
+            Assert.Null(customer.UpdatedAt  );
+        }
     }
 }

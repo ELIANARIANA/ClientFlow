@@ -1,6 +1,10 @@
 CLIENTFLOW - CHANGE HISTORY
 ===========================
 
+[2026-08-29]
+	- ClientFlow.Tests - CustomerTests: add CreateCustomerWithOnlyRequiredData()
+		unit test
+
 [2026-08-27]
 	- ClientFlow.Tests: add unit tests for Customer entity
 	- ClientFlow.Domain: add Customer entity
