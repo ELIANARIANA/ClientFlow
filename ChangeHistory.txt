@@ -2,6 +2,8 @@ CLIENTFLOW - CHANGE HISTORY
 ===========================
 
 [2026-08-29]
+	- ClientFlow.Infrastructure: add 'Microsoft.EntityFrameworkCore.Tools'
+		package reference
 	- ClientFlow.Api - Program: apply pending migrations at startup
 	- ClientFlow: add PostgreSQL AppDbContext configuration
 	- ClientFlow: use tabs for indentation
