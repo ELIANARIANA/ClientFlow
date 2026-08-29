@@ -2,6 +2,7 @@ CLIENTFLOW - CHANGE HISTORY
 ===========================
 
 [2026-08-29]
+	- ClientFlow.Api - Program: apply pending migrations at startup
 	- ClientFlow: Add PostgreSQL AppDbContext configuration
 	- ClientFlow: Use tabs for indentation
 	- ClientFlow.Tests - CustomerTests: add CreateCustomerWithOnlyRequiredData()
