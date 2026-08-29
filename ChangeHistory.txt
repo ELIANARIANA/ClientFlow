@@ -2,6 +2,7 @@ CLIENTFLOW - CHANGE HISTORY
 ===========================
 
 [2026-08-29]
+	- ClientFlow: Add PostgreSQL AppDbContext configuration
 	- ClientFlow: Use tabs for indentation
 	- ClientFlow.Tests - CustomerTests: add CreateCustomerWithOnlyRequiredData()
 		unit test
