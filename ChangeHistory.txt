@@ -1,6 +1,9 @@
 CLIENTFLOW - CHANGE HISTORY
 ===========================
 
+[2026-08-30]
+	- ClientFlow.Infrastructure: add Customers table migration
+
 [2026-08-29]
 	- ClientFlow.Infrastructure: add 'Microsoft.EntityFrameworkCore.Tools'
 		package reference
