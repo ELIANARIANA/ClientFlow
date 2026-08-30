@@ -1,4 +1,6 @@
-﻿using ClientFlow.Application.Customers;
+﻿using Microsoft.EntityFrameworkCore;
+
+using ClientFlow.Application.Customers;
 using ClientFlow.Domain.Entities;
 
 namespace ClientFlow.Infrastructure.Repositories
@@ -17,6 +19,11 @@ namespace ClientFlow.Infrastructure.Repositories
 		#endregion Constructor
 		
 		#region Methods
+		public async Task<List<Customer>> GetAsync()
+		{
+			return await _context.Customers.ToListAsync();
+		}
+
 		public async Task<Customer> AddAsync(Customer customer)
 		{
 			await _context.Customers.AddAsync(customer);

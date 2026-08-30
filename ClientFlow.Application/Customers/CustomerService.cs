@@ -16,6 +16,11 @@ namespace ClientFlow.Application.Customers
 		#endregion Constructor
 
 		#region Methods
+		public async Task<List<Customer>> GetCustomersAsync()
+		{
+			return await _customerRepository.GetAsync();
+		}
+
 		public async Task<Customer> AddCustomerAsync(Customer customer)
 		{
 			return await _customerRepository.AddAsync(customer);

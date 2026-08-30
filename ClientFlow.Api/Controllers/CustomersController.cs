@@ -21,6 +21,13 @@ namespace ClientFlow.Api.Controllers
 		#endregion Constructor
 
 		#region Methods
+		[HttpGet]
+		public async Task<IActionResult> GetCustomers()
+		{
+			var customers = await _customerService.GetCustomersAsync();
+			return Ok(customers);
+		}
+
 		[HttpPost]
 		public async Task<IActionResult> AddCustomer([FromBody]Customer customer)
 		{
