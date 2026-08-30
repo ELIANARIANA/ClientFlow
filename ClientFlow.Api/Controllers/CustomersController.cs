@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
 using ClientFlow.Application.Customers;
+using ClientFlow.Domain.Entities;
 
 namespace ClientFlow.Api.Controllers
 {
@@ -18,5 +19,24 @@ namespace ClientFlow.Api.Controllers
 			_customerService = customerService;
 		}
 		#endregion Constructor
+
+		#region Methods
+		[HttpPost]
+		public async Task<IActionResult> AddCustomer([FromBody]Customer customer)
+		{
+			// Validate the customer object
+			if (customer == null                         ||
+				string.IsNullOrEmpty(customer.FirstName) ||
+				string.IsNullOrEmpty(customer.LastName ) ||
+				string.IsNullOrEmpty(customer.Email    ))
+			{
+				return BadRequest("Invalid customer data.");
+			}
+
+			await _customerService.AddCustomerAsync(customer);
+
+			return Ok(new { Message = "Customer created successfully.", Customer = customer });
+		}
+		#endregion Methods
 	}
 }

@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 
+using ClientFlow.Application.Customers;
 using ClientFlow.Infrastructure;
+using ClientFlow.Infrastructure.Repositories;
 
 namespace ClientFlow.Api
 {
@@ -18,6 +20,9 @@ namespace ClientFlow.Api
 			builder.Services.AddControllers();
 
 			builder.Services.AddOpenApi();
+
+			builder.Services.AddScoped<ICustomerService, CustomerService>();
+			builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
 
 			var app = builder.Build();
 

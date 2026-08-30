@@ -1,4 +1,6 @@
-﻿namespace ClientFlow.Application.Customers
+﻿using ClientFlow.Domain.Entities;
+
+namespace ClientFlow.Application.Customers
 {
 	public class CustomerService : ICustomerService
 	{
@@ -12,5 +14,12 @@
 			_customerRepository = customerRepository;
 		}
 		#endregion Constructor
+
+		#region Methods
+		public async Task<Customer> AddCustomerAsync(Customer customer)
+		{
+			return await _customerRepository.AddAsync(customer);
+		}
+		#endregion Methods
 	}
 }

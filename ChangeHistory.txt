@@ -2,6 +2,7 @@ CLIENTFLOW - CHANGE HISTORY
 ===========================
 
 [2026-08-30]
+	- ClientFlow.Api - CustomersController: add AddCustomer() endpoint
 	- ClientFlow.Api: add CustomersController
 	- ClientFlow.Infrastructure: add Customers table migration
 

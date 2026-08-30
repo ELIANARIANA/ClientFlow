@@ -1,4 +1,5 @@
 ﻿using ClientFlow.Application.Customers;
+using ClientFlow.Domain.Entities;
 
 namespace ClientFlow.Infrastructure.Repositories
 {
@@ -14,5 +15,14 @@ namespace ClientFlow.Infrastructure.Repositories
 			_context = context;
 		}
 		#endregion Constructor
+		
+		#region Methods
+		public async Task<Customer> AddAsync(Customer customer)
+		{
+			await _context.Customers.AddAsync(customer);
+			await _context.SaveChangesAsync();
+			return customer;
+		}
+		#endregion Methods
 	}
 }
