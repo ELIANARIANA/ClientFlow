@@ -19,6 +19,11 @@ namespace ClientFlow.Infrastructure.Repositories
 		#endregion Constructor
 		
 		#region Methods
+		public async Task<Customer?> GetByIdAsync(Guid id)
+		{
+			return await _context.Customers.FirstOrDefaultAsync(x => x.Id == id);
+		}
+
 		public async Task<List<Customer>> GetAsync()
 		{
 			return await _context.Customers.ToListAsync();

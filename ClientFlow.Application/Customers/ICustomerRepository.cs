@@ -4,6 +4,7 @@ namespace ClientFlow.Application.Customers
 {
 	public interface ICustomerRepository
 	{
+		Task<Customer?> GetByIdAsync(Guid id);
 		Task<List<Customer>> GetAsync();
 		Task<Customer> AddAsync(Customer customer);
 	}

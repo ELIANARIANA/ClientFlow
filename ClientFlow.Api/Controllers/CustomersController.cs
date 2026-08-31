@@ -21,6 +21,17 @@ namespace ClientFlow.Api.Controllers
 		#endregion Constructor
 
 		#region Methods
+		[HttpGet("{id}")]
+		public async Task<IActionResult> GetCustomerById(Guid id)
+		{
+			var customer = await _customerService.GetCustomerByIdAsync(id);
+			
+			if (customer == null)
+				return NotFound();
+
+			return Ok(customer);
+		}
+
 		[HttpGet]
 		public async Task<IActionResult> GetCustomers()
 		{
