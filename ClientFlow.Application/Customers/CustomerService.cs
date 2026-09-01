@@ -30,6 +30,11 @@ namespace ClientFlow.Application.Customers
 		{
 			return await _customerRepository.AddAsync(customer);
 		}
+
+		public async Task<Customer?> UpdateCustomerAsync(Guid id, Customer customer)
+		{
+			return await _customerRepository.UpdateAsync(id, customer);
+		}
 		#endregion Methods
 	}
 }

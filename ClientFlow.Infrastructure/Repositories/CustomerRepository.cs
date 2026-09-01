@@ -35,6 +35,19 @@ namespace ClientFlow.Infrastructure.Repositories
 			await _context.SaveChangesAsync();
 			return customer;
 		}
+
+		public async Task<Customer?> UpdateAsync(Guid id, Customer customer)
+		{
+			var existingCustomer = await _context.Customers.FirstOrDefaultAsync(x => x.Id == id);
+
+			if (existingCustomer == null)
+				return null;
+
+			_context.Entry(existingCustomer).CurrentValues.SetValues(customer);
+
+			await _context.SaveChangesAsync();
+			return customer;
+		}
 		#endregion Methods
 	}
 }

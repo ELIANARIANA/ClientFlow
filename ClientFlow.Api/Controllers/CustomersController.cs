@@ -55,6 +55,26 @@ namespace ClientFlow.Api.Controllers
 
 			return Ok(new { Message = "Customer created successfully.", Customer = customer });
 		}
+
+		[HttpPut("{id}")]
+		public async Task<IActionResult> UpdateCustomer(Guid id,Customer customer)
+		{
+			// Validate the customer object
+			if (customer == null                         ||
+				string.IsNullOrEmpty(customer.FirstName) ||
+				string.IsNullOrEmpty(customer.LastName)  ||
+				string.IsNullOrEmpty(customer.Email))
+			{
+				return BadRequest("Invalid customer data.");
+			}
+
+			var result = await _customerService.UpdateCustomerAsync(id, customer);
+
+			if (result == null)
+				return NotFound();
+
+			return Ok(new { Message = "Customer updated successfully.", Customer = customer });
+		}
 		#endregion Methods
 	}
 }
