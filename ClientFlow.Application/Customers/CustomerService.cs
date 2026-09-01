@@ -35,6 +35,11 @@ namespace ClientFlow.Application.Customers
 		{
 			return await _customerRepository.UpdateAsync(id, customer);
 		}
+
+		public async Task<Customer?> DeleteCustomerAsync(Guid id)
+		{
+			return await _customerRepository.DeleteAsync(id);
+		}
 		#endregion Methods
 	}
 }

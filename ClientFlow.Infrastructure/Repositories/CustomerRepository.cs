@@ -48,6 +48,19 @@ namespace ClientFlow.Infrastructure.Repositories
 			await _context.SaveChangesAsync();
 			return customer;
 		}
+
+		public async Task<Customer?> DeleteAsync(Guid id)
+		{
+			var existingCustomer = _context.Customers.FirstOrDefault(x => x.Id == id);
+
+			if (existingCustomer == null)
+				return await Task.FromResult<Customer?>(null);
+
+			_context.Customers.Remove(existingCustomer);
+			await _context.SaveChangesAsync();
+
+			return existingCustomer;
+		}
 		#endregion Methods
 	}
 }

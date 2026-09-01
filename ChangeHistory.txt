@@ -2,6 +2,7 @@ CLIENTFLOW - CHANGE HISTORY
 ===========================
 
 [2026-09-01]
+	- ClientFlow.Api - CustomersController: add DeleteCustomer() endpoint
 	- ClientFlow.Api - CustomersController: add UpdateCustomer() endpoint
 
 [2026-08-31]

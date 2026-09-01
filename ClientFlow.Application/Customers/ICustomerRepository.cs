@@ -8,5 +8,6 @@ namespace ClientFlow.Application.Customers
 		Task<List<Customer>> GetAsync();
 		Task<Customer> AddAsync(Customer customer);
 		Task<Customer?> UpdateAsync(Guid id, Customer customer);
+		Task<Customer?> DeleteAsync(Guid id);
 	}
 }

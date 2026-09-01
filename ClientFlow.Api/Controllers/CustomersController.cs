@@ -75,6 +75,17 @@ namespace ClientFlow.Api.Controllers
 
 			return Ok(new { Message = "Customer updated successfully.", Customer = customer });
 		}
+
+		[HttpDelete("{id}")]
+		public async Task<IActionResult> DeleteCustomer(Guid id)
+		{
+			var result = await _customerService.DeleteCustomerAsync(id);
+
+			if (result == null)
+				return NotFound();
+
+			return Ok(new { Message = "Customer deleted successfully.", Customer = result });
+		}
 		#endregion Methods
 	}
 }
