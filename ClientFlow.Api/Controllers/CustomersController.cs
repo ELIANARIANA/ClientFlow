@@ -42,14 +42,8 @@ namespace ClientFlow.Api.Controllers
 		[HttpPost]
 		public async Task<IActionResult> AddCustomer([FromBody]Customer customer)
 		{
-			// Validate the customer object
-			if (customer == null                         ||
-				string.IsNullOrEmpty(customer.FirstName) ||
-				string.IsNullOrEmpty(customer.LastName ) ||
-				string.IsNullOrEmpty(customer.Email    ))
-			{
+			if (!IsValidCustomer(customer))
 				return BadRequest("Invalid customer data.");
-			}
 
 			await _customerService.AddCustomerAsync(customer);
 
@@ -59,14 +53,8 @@ namespace ClientFlow.Api.Controllers
 		[HttpPut("{id}")]
 		public async Task<IActionResult> UpdateCustomer(Guid id,Customer customer)
 		{
-			// Validate the customer object
-			if (customer == null                         ||
-				string.IsNullOrEmpty(customer.FirstName) ||
-				string.IsNullOrEmpty(customer.LastName)  ||
-				string.IsNullOrEmpty(customer.Email))
-			{
+			if (!IsValidCustomer(customer))
 				return BadRequest("Invalid customer data.");
-			}
 
 			var result = await _customerService.UpdateCustomerAsync(id, customer);
 
@@ -87,5 +75,27 @@ namespace ClientFlow.Api.Controllers
 			return Ok(new { Message = "Customer deleted successfully.", Customer = result });
 		}
 		#endregion Methods
+
+		#region Helper Methods
+		static bool IsValidCustomer(Customer customer)
+		{
+			try
+			{
+				if (customer == null                     ||
+				string.IsNullOrEmpty(customer.FirstName) ||
+				string.IsNullOrEmpty(customer.LastName ) ||
+				string.IsNullOrEmpty(customer.Email    ))
+				{
+					return false;
+				}
+
+				return true;
+			}
+			catch
+			{
+				return false;
+			}
+		}
+		#endregion Helper Methods
 	}
 }
