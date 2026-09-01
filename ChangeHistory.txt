@@ -1,6 +1,9 @@
 CLIENTFLOW - CHANGE HISTORY
 ===========================
 
+[2026-08-31]
+	- ClientFlow.Api - CustomersController: add GetCustomerById() endpoint
+
 [2026-08-30]
 	- ClientFlow.Api - CustomersController: add GetCustomers() endpoint
 	- ClientFlow.Api - CustomersController: add AddCustomer() endpoint
