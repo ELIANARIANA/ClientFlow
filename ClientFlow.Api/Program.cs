@@ -24,6 +24,8 @@ namespace ClientFlow.Api
 			builder.Services.AddScoped<ICustomerService, CustomerService>();
 			builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
 
+			builder.Services.AddSwaggerGen();
+
 			var app = builder.Build();
 
 			// Apply pending migrations at startup
@@ -40,6 +42,13 @@ namespace ClientFlow.Api
 			{
 				app.MapOpenApi();
 			}
+
+			// Add Swagger UI
+			app.UseSwagger();
+			app.UseSwaggerUI(options =>
+			{
+				options.SwaggerEndpoint("/swagger/v1/swagger.json", "ClientFlow API v1");
+			});
 
 			app.UseHttpsRedirection();
 
