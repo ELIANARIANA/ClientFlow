@@ -44,11 +44,14 @@ namespace ClientFlow.Api
 			}
 
 			// Add Swagger UI
-			app.UseSwagger();
-			app.UseSwaggerUI(options =>
+			if(app.Configuration.GetValue<bool>("Swagger:Enabled"))
 			{
-				options.SwaggerEndpoint("/swagger/v1/swagger.json", "ClientFlow API v1");
-			});
+				app.UseSwagger();
+				app.UseSwaggerUI(options =>
+				{
+					options.SwaggerEndpoint("/swagger/v1/swagger.json", "ClientFlow API v1");
+				});
+			}
 
 			app.UseHttpsRedirection();
 

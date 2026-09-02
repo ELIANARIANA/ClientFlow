@@ -1,5 +1,7 @@
 CLIENTFLOW - CHANGE HISTORY
 ===========================
+[2026-09-02]
+	- ClientFlow.Api - appsettings.json: add configurable Swagger toggle
 
 [2026-09-01]
 	- ClientFlow.Api - add IsValidCustomer() method to validate customer data
