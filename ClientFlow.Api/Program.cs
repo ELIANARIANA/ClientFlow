@@ -21,6 +21,7 @@ namespace ClientFlow.Api
 
 			builder.Services.AddOpenApi();
 
+			// Add application services and repositories
 			builder.Services.AddScoped<ICustomerService, CustomerService>();
 			builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
 
