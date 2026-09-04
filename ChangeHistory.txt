@@ -1,5 +1,8 @@
 CLIENTFLOW - CHANGE HISTORY
 ===========================
+[2026-09-04]
+	- ClientFlow.Api - Program: add Serilog logging configuration
+
 [2026-09-02]
 	- ClientFlow.Api - appsettings.json: add configurable Swagger toggle
 

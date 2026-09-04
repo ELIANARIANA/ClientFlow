@@ -1,3 +1,4 @@
+using Serilog;
 using Microsoft.EntityFrameworkCore;
 
 using ClientFlow.Application.Customers;
@@ -11,6 +12,10 @@ namespace ClientFlow.Api
 		public static void Main(string[] args)
 		{ 
 			var builder = WebApplication.CreateBuilder(args);
+
+			// Configure Serilog
+			builder.Host.UseSerilog((context, configuration) =>
+				configuration.ReadFrom.Configuration(context.Configuration));
 
 			builder.Services.AddDbContext<AppDbContext>(options =>
 				options.UseNpgsql(
@@ -28,6 +33,12 @@ namespace ClientFlow.Api
 			builder.Services.AddSwaggerGen();
 
 			var app = builder.Build();
+
+			app.UseSerilogRequestLogging();
+
+			app.Logger.LogInformation("=======================================");
+			app.Logger.LogInformation("ClientFlow API starting...");
+			app.Logger.LogInformation("Environment: {Environment}", app.Environment.EnvironmentName);
 
 			// Apply pending migrations at startup
 			using (var scope = app.Services.CreateScope())
@@ -60,6 +71,9 @@ namespace ClientFlow.Api
 
 
 			app.MapControllers();
+
+			app.Logger.LogInformation("ClientFlow API started successfully.");
+			app.Logger.LogInformation("=======================================");
 
 			app.Run();
 		}
