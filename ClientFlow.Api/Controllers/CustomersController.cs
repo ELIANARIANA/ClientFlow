@@ -5,6 +5,9 @@ using ClientFlow.Domain.Entities;
 
 namespace ClientFlow.Api.Controllers
 {
+	/// <summary>
+	/// Controller for managing customers.
+	/// </summary>
 	[ApiController]
 	[Route("api/customers")]
 	public class CustomersController : Controller
@@ -15,6 +18,11 @@ namespace ClientFlow.Api.Controllers
 		#endregion Members
 
 		#region Constructor
+		/// <summary>
+		/// Initializes a new instance of the <see cref="CustomersController"/> class.
+		/// </summary>
+		/// <param name="logger"></param>
+		/// <param name="customerService"></param>
 		public CustomersController(ILogger<CustomersController> logger, ICustomerService customerService)
 		{
 			_logger = logger;
