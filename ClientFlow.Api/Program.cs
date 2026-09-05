@@ -47,6 +47,12 @@ namespace ClientFlow.Api
 			app.Logger.LogInformation("ClientFlow API starting...");
 			app.Logger.LogInformation("Environment: {Environment}", app.Environment.EnvironmentName);
 
+			var configuredUrls = app.Configuration["urls"]
+					 ?? Environment.GetEnvironmentVariable("ASPNETCORE_URLS")
+					 ?? "http://localhost:5000 (Default)";
+
+			app.Logger.LogInformation("Application will be launched at: {Urls}", configuredUrls);
+
 			// Apply pending migrations at startup
 			using (var scope = app.Services.CreateScope())
 			{
