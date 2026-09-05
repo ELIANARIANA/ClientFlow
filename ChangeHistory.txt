@@ -2,6 +2,7 @@ CLIENTFLOW - CHANGE HISTORY
 ===========================
 
 [2026-09-05]
+	- ClientFlow.api - add XML-Documentations to Swagger UI
 	_ ClientFlow.Api - CustomersController: add XML-Documentations
 	- ClientFlow.Api - CustomersController: add _logger field
 
