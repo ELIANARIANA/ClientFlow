@@ -1,5 +1,9 @@
 CLIENTFLOW - CHANGE HISTORY
 ===========================
+
+[2026-09-05]
+	- ClientFlow.Api - CustomersController: add _logger field
+
 [2026-09-04]
 	- ClientFlow.Api - Program: add Serilog logging configuration
 
