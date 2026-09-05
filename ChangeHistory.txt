@@ -1,5 +1,7 @@
 CLIENTFLOW - CHANGE HISTORY
 ===========================
+[2026-09-06]
+	- ClientFlow.Api - Program: add XML-Documentations
 
 [2026-09-05]
 	- ClientFlow.api - appsettings: set default host URLs

@@ -7,8 +7,15 @@ using ClientFlow.Infrastructure.Repositories;
 
 namespace ClientFlow.Api
 {
+	/// <summary>
+	/// The main entry point for the ClientFlow API application.
+	/// </summary>
 	public class Program
 	{
+		/// <summary>
+		/// The main entry point for the application.
+		/// </summary>
+		/// <param name="args"></param>
 		public static void Main(string[] args)
 		{ 
 			var builder = WebApplication.CreateBuilder(args);
