@@ -2,6 +2,7 @@ CLIENTFLOW - CHANGE HISTORY
 ===========================
 
 [2026-09-05]
+	_ ClientFlow.Api - CustomersController: add XML-Documentations
 	- ClientFlow.Api - CustomersController: add _logger field
 
 [2026-09-04]
