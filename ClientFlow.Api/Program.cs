@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using ClientFlow.Application.Customers;
 using ClientFlow.Infrastructure;
 using ClientFlow.Infrastructure.Repositories;
+using ClientFlow.Api.Middleware;
 
 namespace ClientFlow.Api
 {
@@ -32,6 +33,10 @@ namespace ClientFlow.Api
 			builder.Services.AddControllers();
 
 			builder.Services.AddOpenApi();
+
+			// Add global exception handler
+			builder.Services.AddProblemDetails();
+			builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 
 			// Add application services and repositories
 			builder.Services.AddScoped<ICustomerService, CustomerService>();
@@ -84,6 +89,8 @@ namespace ClientFlow.Api
 					options.SwaggerEndpoint("/swagger/v1/swagger.json", "ClientFlow API v1");
 				});
 			}
+
+			app.UseExceptionHandler();
 
 			app.UseHttpsRedirection();
 

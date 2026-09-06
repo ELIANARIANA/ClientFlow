@@ -2,6 +2,7 @@ CLIENTFLOW - CHANGE HISTORY
 ===========================
 
 [2026-09-06]
+	- ClientFlow.Api - add global exception handler
 	- ClientFlow.Api - Program: add XML-Documentations
 
 [2026-09-05]
