@@ -89,7 +89,6 @@ namespace ClientFlow.Api
 
 			app.UseAuthorization();
 
-
 			app.MapControllers();
 
 			app.Logger.LogInformation("ClientFlow API started successfully.");
