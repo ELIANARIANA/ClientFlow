@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 
+using ClientFlow.Application.Exceptions;
+
 namespace ClientFlow.Api.Middleware
 {
 	/// <summary>
@@ -35,17 +37,44 @@ namespace ClientFlow.Api.Middleware
 		{
 			_logger.LogError(exception, "Unhandled exception occurred. TraceId: {TraceId}", httpContext.TraceIdentifier);
 
+			var statusCode = exception switch
+			{
+				ArgumentException     => StatusCodes.Status400BadRequest,
+				ValidationException   => StatusCodes.Status400BadRequest,
+				NotFoundException     => StatusCodes.Status404NotFound,
+				UnauthorizedException => StatusCodes.Status401Unauthorized,
+				ForbiddenException    => StatusCodes.Status403Forbidden,
+				ConflictException     => StatusCodes.Status409Conflict,
+				_ => StatusCodes.Status500InternalServerError
+			};
+
+			var title = exception switch
+			{
+				ArgumentException     => "Invalid argument provided.",
+				ValidationException   => "Validation failed for the request.",
+				NotFoundException     => "The requested resource was not found.",
+				UnauthorizedException => "You are not authorized to access this resource.",
+				ForbiddenException    => "You do not have permission to access this resource.",
+				ConflictException     => "A conflict occurred with the current state of the resource.",
+				_ => "An unexpected error occurred."
+			};
+
+			var detail = statusCode == StatusCodes.Status500InternalServerError
+				? "An unexpected error occurred while processing your request."
+				: exception.Message;
+
+
 			var problemDetails = new ProblemDetails
 			{
-				Status   = StatusCodes.Status500InternalServerError,
-				Title    = "An unexpected error occurred.",
-				Detail   = exception.Message,
+				Status   = statusCode,
+				Title    = title,
+				Detail   = detail,
 				Instance = httpContext.Request.Path
 			};
 
 			problemDetails.Extensions["traceId"] = httpContext.TraceIdentifier;
 
-			httpContext.Response.StatusCode = StatusCodes.Status500InternalServerError;
+			httpContext.Response.StatusCode = statusCode;
 
 			await httpContext.Response.WriteAsJsonAsync(problemDetails, cancellationToken);
 

@@ -2,6 +2,8 @@ CLIENTFLOW - CHANGE HISTORY
 ===========================
 
 [2026-09-07]
+	- ClientFlow.Api - GlobalExceptionHandler: improve TryHandleAsync()
+		to handle exceptions more effectively
 	- ClientFlow.Application - add exception classes
 
 [2026-09-06]
