@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
 using ClientFlow.Application.Customers;
+using ClientFlow.Application.Exceptions;
 using ClientFlow.Domain.Entities;
 
 namespace ClientFlow.Api.Controllers
@@ -46,7 +47,7 @@ namespace ClientFlow.Api.Controllers
 			if (customer == null)
 			{
 				_logger.LogWarning($"Customer with ID: {id} not found!");
-				return NotFound();
+				throw new NotFoundException($"Customer with ID: {id} not found.");
 			}
 
 			_logger.LogInformation($"Customer with ID: {id} retrieved successfully.");
@@ -81,8 +82,7 @@ namespace ClientFlow.Api.Controllers
 			if (!IsValidCustomer(customer))
 			{
 				_logger.LogWarning("Invalid customer data received!");
-
-				return BadRequest("Invalid customer data.");
+				throw new ValidationException("Invalid customer data received.");
 			}
 				
 
@@ -107,8 +107,7 @@ namespace ClientFlow.Api.Controllers
 			if (!IsValidCustomer(customer))
 			{
 				_logger.LogWarning("Invalid customer data received!");
-
-				return BadRequest("Invalid customer data.");
+				throw new ValidationException("Invalid customer data.");
 			}
 				
 			_logger.LogInformation($"Updating customer with ID: '{id}'...");
@@ -118,7 +117,7 @@ namespace ClientFlow.Api.Controllers
 			if (result == null)
 			{
 				_logger.LogWarning($"Customer with ID: {id} not found!");
-				return NotFound();
+				throw new NotFoundException($"Customer with ID: {id} not found.");
 			}
 			
 			_logger.LogInformation($"Customer with ID: {id} updated successfully.");
@@ -141,7 +140,7 @@ namespace ClientFlow.Api.Controllers
 			if (result == null)
 			{
 				_logger.LogWarning($"Customer with ID: {id} not found!");
-				return NotFound();
+				throw new NotFoundException($"Customer with ID: {id} not found.");
 			}
 
 			_logger.LogInformation($"Customer with ID: {id} deleted successfully.");

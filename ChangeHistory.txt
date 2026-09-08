@@ -1,6 +1,10 @@
 CLIENTFLOW - CHANGE HISTORY
 ===========================
 
+[2026-09-08]
+	- ClientFlow.Api - CustomersController: use exceptions handling instead of
+		IActionResult actions
+
 [2026-09-07]
 	- ClientFlow.Api - GlobalExceptionHandler: improve TryHandleAsync()
 		to handle exceptions more effectively
