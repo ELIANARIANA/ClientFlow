@@ -15,7 +15,7 @@ namespace ClientFlow.Application.Customers
 		}
 		#endregion Constructor
 
-		#region Methods
+		#region Public Methods
 		public async Task<Customer?> GetCustomerByIdAsync(Guid id)
 		{
 			return await _customerRepository.GetByIdAsync(id);
@@ -40,6 +40,6 @@ namespace ClientFlow.Application.Customers
 		{
 			return await _customerRepository.DeleteAsync(id);
 		}
-		#endregion Methods
+		#endregion Public Methods
 	}
 }

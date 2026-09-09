@@ -18,7 +18,7 @@ namespace ClientFlow.Infrastructure.Repositories
 		}
 		#endregion Constructor
 		
-		#region Methods
+		#region Public Methods
 		public async Task<Customer?> GetByIdAsync(Guid id)
 		{
 			return await _context.Customers.FirstOrDefaultAsync(x => x.Id == id);
@@ -61,6 +61,6 @@ namespace ClientFlow.Infrastructure.Repositories
 
 			return existingCustomer;
 		}
-		#endregion Methods
+		#endregion Public Methods
 	}
 }
