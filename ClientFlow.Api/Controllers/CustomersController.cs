@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Net.Mail;
+using Microsoft.AspNetCore.Mvc;
 
 using ClientFlow.Application.Customers;
 using ClientFlow.Application.Exceptions;
@@ -163,7 +164,9 @@ namespace ClientFlow.Api.Controllers
 				if (customer == null                     ||
 				string.IsNullOrEmpty(customer.FirstName) ||
 				string.IsNullOrEmpty(customer.LastName ) ||
-				string.IsNullOrEmpty(customer.Email    ))
+				string.IsNullOrEmpty(customer.Email    ) &&
+				new MailAddress(customer.Email).Address
+				== customer.Email)
 				{
 					return false;
 				}

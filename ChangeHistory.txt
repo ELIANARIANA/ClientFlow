@@ -1,6 +1,9 @@
 CLIENTFLOW - CHANGE HISTORY
 ===========================
 
+[2026-09-10]
+	- ClientFlow.Api - CustomersController - IsValidCustomer(): add E-Mail-validation
+
 [2026-09-09]
 	- ClientFlow.Infrastructure - AppDbContext: add XML-Documentations
 
