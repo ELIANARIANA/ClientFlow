@@ -1,6 +1,9 @@
 CLIENTFLOW - CHANGE HISTORY
 ===========================
 
+[2026-09-12]
+	- ClientFlow.Domain - add User entity
+
 [2026-09-11]
 	- ClientFlow.Api - CustomersController - AddCustomer() & UpdateCustomer(): remove
 		redundant customer validation
