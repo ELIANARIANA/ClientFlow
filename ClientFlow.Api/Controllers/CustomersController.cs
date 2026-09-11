@@ -88,7 +88,6 @@ namespace ClientFlow.Api.Controllers
 				throw new ValidationException("Invalid customer data received.");
 			}
 
-
 			await _customerService.AddCustomerAsync(customer);
 
 			_logger.LogInformation($"Customer with ID: {customer.Id} created successfully.");
