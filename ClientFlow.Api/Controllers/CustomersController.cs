@@ -80,14 +80,14 @@ namespace ClientFlow.Api.Controllers
 		[HttpPost]
 		public async Task<IActionResult> AddCustomer([FromBody]Customer customer)
 		{
+			_logger.LogInformation("Adding new customer...");
+
 			if (!IsValidCustomer(customer))
 			{
 				_logger.LogWarning("Invalid customer data received!");
 				throw new ValidationException("Invalid customer data received.");
 			}
-				
 
-			_logger.LogInformation("Adding new customer...");
 
 			await _customerService.AddCustomerAsync(customer);
 
