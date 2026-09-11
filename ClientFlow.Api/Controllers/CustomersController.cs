@@ -82,12 +82,6 @@ namespace ClientFlow.Api.Controllers
 		{
 			_logger.LogInformation("Adding new customer...");
 
-			if (!IsValidCustomer(customer))
-			{
-				_logger.LogWarning("Invalid customer data received!");
-				throw new ValidationException("Invalid customer data received.");
-			}
-
 			await _customerService.AddCustomerAsync(customer);
 
 			_logger.LogInformation($"Customer with ID: {customer.Id} created successfully.");
@@ -104,12 +98,6 @@ namespace ClientFlow.Api.Controllers
 		[HttpPut("{id}")]
 		public async Task<IActionResult> UpdateCustomer(Guid id,Customer customer)
 		{
-			if (!IsValidCustomer(customer))
-			{
-				_logger.LogWarning("Invalid customer data received!");
-				throw new ValidationException("Invalid customer data.");
-			}
-				
 			_logger.LogInformation($"Updating customer with ID: '{id}'...");
 
 			var result = await _customerService.UpdateCustomerAsync(id, customer);

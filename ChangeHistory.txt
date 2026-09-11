@@ -1,6 +1,10 @@
 CLIENTFLOW - CHANGE HISTORY
 ===========================
 
+[2026-09-11]
+	- ClientFlow.Api - CustomersController - AddCustomer() & UpdateCustomer(): remove
+		redundant customer validation
+
 [2026-09-10]
 	- ClientFlow.Api - CustomersController - IsValidCustomer(): add E-Mail-validation
 
