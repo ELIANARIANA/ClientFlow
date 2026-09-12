@@ -22,6 +22,10 @@ namespace ClientFlow.Infrastructure
 		/// </summary>
 		public DbSet<Customer> Customers { get; set; }
 
+		/// <summary>
+		/// Gets or sets the Users DbSet.
+		/// </summary>
+		public DbSet<User> Users { get; set; }
 
 		/// <summary>
 		/// Configures the model for the context.
@@ -40,6 +44,15 @@ namespace ClientFlow.Infrastructure
 				entity.Property(x => x.CompanyName);
 				entity.Property(x => x.CreatedAt).IsRequired();
 				entity.Property(x => x.UpdatedAt);
+			});
+			modelBuilder.Entity<User>(entity =>
+			{
+				entity.HasKey(x => x.Id);
+				entity.Property(x => x.Email).IsRequired();
+				entity.Property(x => x.PasswordHash).IsRequired();
+				entity.Property(x => x.CreatedAt).IsRequired();
+				entity.Property(x => x.UpdatedAt);
+				entity.HasIndex(x => x.Email).IsUnique();
 			});
 		}
 	}
