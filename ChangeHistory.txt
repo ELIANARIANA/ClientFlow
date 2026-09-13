@@ -1,6 +1,7 @@
 CLIENTFLOW - CHANGE HISTORY
 ===========================
 [2026-09-13]
+	- ClientFlow.Application - add DTOs for Login
 	- ClientFlow - add JWT token service
 
 [2026-09-12]
