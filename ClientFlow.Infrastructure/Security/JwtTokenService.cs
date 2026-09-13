@@ -23,6 +23,7 @@ namespace ClientFlow.Infrastructure.Security
 		}
 		#endregion Constructor
 
+		#region Public Methods
 		public string CreateToken(User user)
 		{
 			var key = _configuration["Jwt:Key"]
@@ -69,5 +70,6 @@ namespace ClientFlow.Infrastructure.Security
 			return new JwtSecurityTokenHandler()
 				.WriteToken(token);
 		}
+		#endregion Public Methods
 	}
 }
