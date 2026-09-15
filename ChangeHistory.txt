@@ -1,6 +1,9 @@
 CLIENTFLOW - CHANGE HISTORY
 ===========================
 
+[2026-09-15]
+	- ClientFlow.Application - add authentication service
+
 [2026-09-14]
 	- ClientFlow.Infrastructure - add user repository
 
