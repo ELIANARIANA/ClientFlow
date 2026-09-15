@@ -2,8 +2,11 @@ using Serilog;
 using Microsoft.EntityFrameworkCore;
 
 using ClientFlow.Application.Customers;
+using ClientFlow.Application.Interfaces;
+using ClientFlow.Application.Services;
 using ClientFlow.Infrastructure;
 using ClientFlow.Infrastructure.Repositories;
+using ClientFlow.Infrastructure.Security;
 using ClientFlow.Api.Middleware;
 
 namespace ClientFlow.Api
@@ -41,6 +44,11 @@ namespace ClientFlow.Api
 			// Add application services and repositories
 			builder.Services.AddScoped<ICustomerService, CustomerService>();
 			builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
+
+			builder.Services.AddScoped<IUserRepository, UserRepository>();
+			builder.Services.AddScoped<IPasswordHasher, PasswordHasher>();
+			builder.Services.AddScoped<IJwtTokenService, JwtTokenService>();
+			builder.Services.AddScoped<AuthService>();
 
 			builder.Services.AddSwaggerGen(options =>
 			{
