@@ -1,6 +1,9 @@
 CLIENTFLOW - CHANGE HISTORY
 ===========================
 
+[2026-09-16]
+	- ClientFlow.Api: add AuthController
+
 [2026-09-15]
 	- ClientFlow.Api - Program: add dependency Injection
 	- ClientFlow.Application - add authentication service
