@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 using ClientFlow.Application.DTOs.Auth;
 using ClientFlow.Application.Services;
+using ClientFlow.Domain.Entities;
 
 namespace ClientFlow.Api.Controllers
 {
@@ -32,6 +33,21 @@ namespace ClientFlow.Api.Controllers
 		#endregion Constructor
 
 		#region Public Methods
+		/// <summary>
+		/// User register.
+		/// </summary>
+		/// <param name="request"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
+		[AllowAnonymous]
+		[HttpPost("register")]
+		public async Task<ActionResult<User>> Register(RegisterRequest request, CancellationToken cancellationToken)
+		{
+			var response = await _authService.RegisterAsync(request, cancellationToken);
+
+			return Ok(response);
+		}
+
 		/// <summary>
 		/// user login.
 		/// </summary>

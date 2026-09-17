@@ -1,6 +1,9 @@
 CLIENTFLOW - CHANGE HISTORY
 ===========================
 
+[2026-09-17]
+	- ClientFlow.Api - AuthController: add Register()
+
 [2026-09-16]
 	- ClientFlow.Api: add AuthController
 

@@ -1,5 +1,7 @@
 ﻿using ClientFlow.Application.DTOs.Auth;
+using ClientFlow.Application.Exceptions;
 using ClientFlow.Application.Interfaces;
+using ClientFlow.Domain.Entities;
 
 namespace ClientFlow.Application.Services
 {
@@ -21,6 +23,24 @@ namespace ClientFlow.Application.Services
 		#endregion Constructor
 
 		#region Public Methods
+		public async Task<User> RegisterAsync(RegisterRequest request, CancellationToken cancellationToken = default)
+		{
+			var email = request.Email.Trim().ToLowerInvariant();
+
+			var existingUser = await _userRepository.GetByEmailAsync(email, cancellationToken);
+
+			if (existingUser is not null)
+				throw new ConflictException("A user with this email already exists.");
+
+			var passwordHash = _passwordHasher.Hash(request.Password);
+
+			var user = new User(email, passwordHash, "User");
+
+			await _userRepository.AddAsync(user, cancellationToken);
+
+			return user;
+		}
+
 		public async Task<LoginResponse> LoginAsync(LoginRequest request, CancellationToken cancellationToken = default)
 		{
 			var user = await _userRepository.GetByEmailAsync(request.Email, cancellationToken);
