@@ -138,7 +138,6 @@ namespace ClientFlow.Api.Controllers
 		#endregion Methods
 
 		#region Helper Methods
-
 		/// <summary>
 		/// Validates the customer object to ensure it has required fields.
 		/// </summary>
