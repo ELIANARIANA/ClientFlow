@@ -39,10 +39,10 @@ namespace ClientFlow.Infrastructure.Security
 				"Jwt Audience is not configured");
 
 			var expirationMinutes = int.TryParse(
-				_configuration["Jwt:ExpirationMinutes"], out var minutes)
+				_configuration["Jwt:ExpireMinutes"], out var minutes)
 				? minutes
 				: throw new InvalidOperationException(
-				"Jwt ExpirationMinutes is not configured");
+				"Jwt ExpireMinutes is not configured");
 
 			var claims = new List<Claim>
 			{
