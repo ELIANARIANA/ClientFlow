@@ -1,6 +1,9 @@
 CLIENTFLOW - CHANGE HISTORY
 ===========================
 
+[2026-09-19]
+	- ClientFlow.api - Prgramm: configure authentication and Swagger
+
 [2026-09-17]
 	- ClientFlow.Api - AuthController: add Register()
 

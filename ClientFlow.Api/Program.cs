@@ -1,5 +1,10 @@
+using System.Text;
 using Serilog;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi;
+
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 
 using ClientFlow.Application.Customers;
 using ClientFlow.Application.Interfaces;
@@ -50,6 +55,34 @@ namespace ClientFlow.Api
 			builder.Services.AddScoped<IJwtTokenService, JwtTokenService>();
 			builder.Services.AddScoped<AuthService>();
 
+			// Authentication
+			builder.Services
+				.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+				.AddJwtBearer(options =>
+				{
+					options.TokenValidationParameters = new TokenValidationParameters
+					{
+						ValidateIssuer           = true,
+						ValidateAudience         = true,
+						ValidateLifetime         = true,
+						ValidateIssuerSigningKey = true,
+
+						ValidIssuer   = builder.Configuration["Jwt:Issuer"],
+						ValidAudience = builder.Configuration["Jwt:Audience"],
+
+						IssuerSigningKey = new SymmetricSecurityKey(
+							Encoding.UTF8.GetBytes(
+								builder.Configuration["Jwt:Key"]!
+							)
+						)
+					};
+				});
+
+			// Authorization
+			builder.Services.AddAuthorization();
+
+			builder.Services.AddEndpointsApiExplorer();
+
 			builder.Services.AddSwaggerGen(options =>
 			{
 				var xmlFile = $"{System.Reflection.Assembly.GetExecutingAssembly().GetName().Name}.xml";
@@ -57,6 +90,23 @@ namespace ClientFlow.Api
 
 				if (File.Exists(xmlPath))
 					options.IncludeXmlComments(xmlPath);
+
+				options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+				{
+					
+					Name         = "Authorization",
+					Type         = SecuritySchemeType.Http,
+					Scheme       = "Bearer",
+					BearerFormat = "JWT",
+					In           = ParameterLocation.Header,
+					Description  = "Enter 'Bearer {Token}' (e.g. 'Bearer eyJhbG...')",
+				});
+
+				options.AddSecurityRequirement(document =>
+					new OpenApiSecurityRequirement
+					{
+						[new OpenApiSecuritySchemeReference("Bearer", document)] = []
+					});
 			});
 
 			var app = builder.Build();
@@ -102,6 +152,7 @@ namespace ClientFlow.Api
 
 			app.UseHttpsRedirection();
 
+			app.UseAuthentication();
 			app.UseAuthorization();
 
 			app.MapControllers();
