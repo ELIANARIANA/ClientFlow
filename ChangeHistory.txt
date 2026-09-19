@@ -2,6 +2,7 @@ CLIENTFLOW - CHANGE HISTORY
 ===========================
 
 [2026-09-19]
+	- ClientFlow.Api - CustomersController: add [Authorize] to controller
 	- ClientFlow.api - Prgramm: configure authentication and Swagger
 
 [2026-09-17]

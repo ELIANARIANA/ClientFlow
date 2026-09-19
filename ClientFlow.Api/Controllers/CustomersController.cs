@@ -1,5 +1,6 @@
 ﻿using System.Net.Mail;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 using ClientFlow.Application.Customers;
 using ClientFlow.Application.Exceptions;
@@ -10,6 +11,7 @@ namespace ClientFlow.Api.Controllers
 	/// <summary>
 	/// Controller for managing customers.
 	/// </summary>
+	[Authorize]
 	[ApiController]
 	[Route("api/customers")]
 	public class CustomersController : Controller
