@@ -1,4 +1,6 @@
-﻿using ClientFlow.Application.DTOs.Auth;
+﻿using FluentValidation;
+
+using ClientFlow.Application.DTOs.Auth;
 using ClientFlow.Application.Exceptions;
 using ClientFlow.Application.Interfaces;
 using ClientFlow.Domain.Entities;
@@ -11,20 +13,40 @@ namespace ClientFlow.Application.Services
 		private readonly IUserRepository _userRepository;
 		private readonly IPasswordHasher _passwordHasher;
 		private readonly IJwtTokenService _jwtTokenService;
+		private readonly IValidator<RegisterRequest> _registerValidator;
 		#endregion Members
 
 		#region Constructor
-		public AuthService(IUserRepository userRepository, IPasswordHasher passwordHasher, IJwtTokenService jwtTokenService)
+		public AuthService(IUserRepository userRepository, IPasswordHasher passwordHasher, IJwtTokenService jwtTokenService,
+			IValidator<RegisterRequest> registerValidator)
 		{
 			_userRepository  = userRepository;
 			_passwordHasher  = passwordHasher;
 			_jwtTokenService = jwtTokenService;
+			_registerValidator = registerValidator;
 		}
 		#endregion Constructor
 
 		#region Public Methods
 		public async Task<User> RegisterAsync(RegisterRequest request, CancellationToken cancellationToken = default)
 		{
+			var validationResult =
+			await _registerValidator.ValidateAsync(
+				request,
+				cancellationToken);
+
+			if (!validationResult.IsValid)
+			{
+				var errors = validationResult
+					.Errors
+					.GroupBy(x => x.PropertyName)
+					.ToDictionary(
+						x => x.Key,
+						x => x.Select(e => e.ErrorMessage).ToArray());
+
+				throw new Exceptions.ValidationException(errors);
+			}
+
 			var email = request.Email.Trim().ToLowerInvariant();
 
 			var existingUser = await _userRepository.GetByEmailAsync(email, cancellationToken);

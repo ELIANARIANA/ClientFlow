@@ -1,6 +1,7 @@
 using System.Text;
 
 using Serilog;
+using FluentValidation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi;
@@ -13,6 +14,7 @@ using ClientFlow.Infrastructure;
 using ClientFlow.Infrastructure.Repositories;
 using ClientFlow.Infrastructure.Security;
 using ClientFlow.Api.Middleware;
+using ClientFlow.Application.Validators.Auth;
 
 namespace ClientFlow.Api
 {
@@ -54,6 +56,8 @@ namespace ClientFlow.Api
 			builder.Services.AddScoped<IPasswordHasher, PasswordHasher>();
 			builder.Services.AddScoped<IJwtTokenService, JwtTokenService>();
 			builder.Services.AddScoped<AuthService>();
+
+			builder.Services.AddValidatorsFromAssemblyContaining<RegisterRequestValidator>();
 
 			// Authentication
 			builder.Services
