@@ -1,6 +1,9 @@
 CLIENTFLOW - CHANGE HISTORY
 ===========================
 
+[2026-09-20]
+	- ClientFlow.Application - add RegisterRequestValidator class
+
 [2026-09-19]
 	- ClientFlow.Api - CustomersController: add [Authorize] to controller
 	- ClientFlow.api - Prgramm: configure authentication and Swagger
