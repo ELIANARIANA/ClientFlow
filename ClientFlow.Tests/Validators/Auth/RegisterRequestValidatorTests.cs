@@ -51,6 +51,38 @@ namespace ClientFlow.Tests.Validators.Auth
 		}
 
 		[Fact]
+		public void ShouldHaveErrorWhenEmailIsInvalid()
+		{
+			var request = new RegisterRequest
+			{
+				Email    = "user@",
+				Password = "Password123!",
+			};
+
+			// Act
+			var result = _registerReqValidator.TestValidate(request);
+
+			// Assert
+			result.ShouldHaveValidationErrorFor(x => x.Email);
+		}
+
+		[Fact]
+		public void ShouldHaveErrorWhenEmailIsTooLong()
+		{
+			var request = new RegisterRequest
+			{
+				Email    = new string('a', 250 ) + "user@",
+				Password = "Password123!",
+			};
+
+			// Act
+			var result = _registerReqValidator.TestValidate(request);
+
+			// Assert
+			result.ShouldHaveValidationErrorFor(x => x.Email);
+		}
+
+		[Fact]
 		public void ShowHaveErrorWhenPasswordIsEmpty()
 		{
 			var request = new RegisterRequest()
@@ -59,6 +91,38 @@ namespace ClientFlow.Tests.Validators.Auth
 				Password = "",
 			};
 
+			// Act
+			var result = _registerReqValidator.TestValidate(request);
+
+			// Assert
+			result.ShouldHaveValidationErrorFor(x => x.Password);
+		}
+
+		[Fact]
+		public void ShowHaveErrorWhenPasswordIsTooShort()
+		{
+			var request = new RegisterRequest()
+			{
+				Email    = "user@example.com",
+				Password = "string",
+			};
+
+			// Act
+			var result = _registerReqValidator.TestValidate(request);
+
+			// Assert
+			result.ShouldHaveValidationErrorFor(x => x.Password);
+		}
+
+		[Fact]
+		public void ShowHaveErrorWhenPasswordIsTooLong()
+		{
+			var request = new RegisterRequest()
+			{
+				Email    = "user@example.com",
+				Password = new String('a', 101),
+			};
+			
 			// Act
 			var result = _registerReqValidator.TestValidate(request);
 

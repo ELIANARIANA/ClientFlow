@@ -1,5 +1,9 @@
 CLIENTFLOW - CHANGE HISTORY
 ===========================
+
+[2026-09-22]
+	- ClientFlow.Tests - RegisterRequestValidator: add more unit tests
+
 [2026-09-21]
 	- ClientFlow.Tests: add unit tests for RegisterRequestValidator
 
