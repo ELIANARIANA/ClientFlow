@@ -18,6 +18,7 @@ namespace ClientFlow.Tests.Validators.Auth
 		}
 		#endregion Constructor
 
+		#region Unit Tests
 		[Fact]
 		public void ShouldNotHaveErrorWhenRequestIsValid()
 		{
@@ -129,5 +130,6 @@ namespace ClientFlow.Tests.Validators.Auth
 			// Assert
 			result.ShouldHaveValidationErrorFor(x => x.Password);
 		}
+		#endregion Unit Tests
 	}
 }
