@@ -2,6 +2,7 @@ CLIENTFLOW - CHANGE HISTORY
 ===========================
 
 [2026-09-22]
+	- ClientFlow.Domain - add UserRole enum
 	- ClientFlow.Tests - RegisterRequestValidator: add more unit tests
 
 [2026-09-21]
