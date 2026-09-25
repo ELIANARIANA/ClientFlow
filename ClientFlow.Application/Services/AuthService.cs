@@ -28,7 +28,7 @@ namespace ClientFlow.Application.Services
 		#endregion Constructor
 
 		#region Public Methods
-		public async Task<User> RegisterAsync(RegisterRequest request, CancellationToken cancellationToken = default)
+		public async Task<RegisterResponse> RegisterAsync(RegisterRequest request, CancellationToken cancellationToken = default)
 		{
 			var validationResult =
 			await _registerValidator.ValidateAsync(
@@ -60,7 +60,13 @@ namespace ClientFlow.Application.Services
 
 			await _userRepository.AddAsync(user, cancellationToken);
 
-			return user;
+			return new RegisterResponse
+			{
+				Id        = user.Id,
+				Email     = user.Email,
+				Role      = user.Role,
+				CreatedAt = user.CreatedAt,
+			};
 		}
 
 		public async Task<LoginResponse> LoginAsync(LoginRequest request, CancellationToken cancellationToken = default)

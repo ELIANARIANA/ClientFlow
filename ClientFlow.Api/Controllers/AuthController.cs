@@ -41,7 +41,7 @@ namespace ClientFlow.Api.Controllers
 		/// <returns></returns>
 		[AllowAnonymous]
 		[HttpPost("register")]
-		public async Task<ActionResult<User>> Register(RegisterRequest request, CancellationToken cancellationToken)
+		public async Task<ActionResult<RegisterResponse>> Register(RegisterRequest request, CancellationToken cancellationToken)
 		{
 			var response = await _authService.RegisterAsync(request, cancellationToken);
 
