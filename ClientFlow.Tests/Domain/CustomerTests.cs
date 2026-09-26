@@ -2,6 +2,7 @@
 {
 	public class CustomerTests
 	{
+		#region Unit Tests
 		[Fact]
 		public void CreateCustomerWithValidData()
 		{
@@ -50,5 +51,6 @@
 			Assert.Null(customer.CompanyName);
 			Assert.Null(customer.UpdatedAt  );
 		}
+		#endregion Unit Tests
 	}
 }
