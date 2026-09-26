@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
+using ClientFlow.Domain.Enums;
 
 namespace ClientFlow.Domain.Entities
 {
@@ -9,17 +10,17 @@ namespace ClientFlow.Domain.Entities
 		[EmailAddress]
 		public string Email { get; private set; } = string.Empty;
 		public string PasswordHash { get; private set; } = string.Empty;
-		public string Role { get; private set; } = "User";
+		public int Role { get; private set; } = (int)UserRole.User;
 		public DateTimeOffset CreatedAt { get; private set; }
 		public DateTimeOffset? UpdatedAt { get; set; }
 
 		private User() { }
 
-		public User(string email, string passwordHash, string role)
+		public User(string email, string passwordHash, UserRole role)
 		{
 			Email        = email;
 			PasswordHash = passwordHash;
-			Role         = role;
+			Role         = (int)role;
 			CreatedAt    = DateTimeOffset.UtcNow;
 		}
 

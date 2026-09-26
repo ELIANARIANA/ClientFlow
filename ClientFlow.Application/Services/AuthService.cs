@@ -4,6 +4,7 @@ using ClientFlow.Application.DTOs.Auth;
 using ClientFlow.Application.Exceptions;
 using ClientFlow.Application.Interfaces;
 using ClientFlow.Domain.Entities;
+using ClientFlow.Domain.Enums;
 
 namespace ClientFlow.Application.Services
 {
@@ -56,7 +57,7 @@ namespace ClientFlow.Application.Services
 
 			var passwordHash = _passwordHasher.Hash(request.Password);
 
-			var user = new User(email, passwordHash, "User");
+			var user = new User(email, passwordHash, UserRole.User);
 
 			await _userRepository.AddAsync(user, cancellationToken);
 

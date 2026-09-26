@@ -50,6 +50,7 @@ namespace ClientFlow.Infrastructure
 				entity.HasKey(x => x.Id);
 				entity.Property(x => x.Email).IsRequired();
 				entity.Property(x => x.PasswordHash).IsRequired();
+				entity.Property(x => x.Role).IsRequired();
 				entity.Property(x => x.CreatedAt).IsRequired();
 				entity.Property(x => x.UpdatedAt);
 				entity.HasIndex(x => x.Email).IsUnique();

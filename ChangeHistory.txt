@@ -1,6 +1,9 @@
 CLIENTFLOW - CHANGE HISTORY
 ===========================
 
+[2026-09-26]
+	- ClientFlow.Infrastructure - migrate User Role from text to integer
+
 [2026-09-25]
 	- ClientFlow.Api - AuthController - Register(): now returns
 		RegisterResponse
