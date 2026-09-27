@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 
 using ClientFlow.Application.DTOs.Auth;
 using ClientFlow.Application.Services;
-using ClientFlow.Domain.Entities;
 
 namespace ClientFlow.Api.Controllers
 {
