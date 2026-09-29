@@ -7,6 +7,7 @@ using Microsoft.IdentityModel.Tokens;
 
 using ClientFlow.Application.Interfaces;
 using ClientFlow.Domain.Entities;
+using ClientFlow.Domain.Enums;
 
 namespace ClientFlow.Infrastructure.Security
 {
@@ -50,8 +51,18 @@ namespace ClientFlow.Infrastructure.Security
 				new(JwtRegisteredClaimNames.Email, user.Email),
 				new(ClaimTypes.NameIdentifier, user.Id.ToString()),
 				new(ClaimTypes.Email, user.Email),
-				new(ClaimTypes.Role, user.Role.ToString()),
 			};
+
+			var roles = (UserRole)user.Role;
+
+			if (roles.HasFlag(UserRole.User))
+				claims.Add(new Claim(ClaimTypes.Role, nameof(UserRole.User)));
+
+			if (roles.HasFlag(UserRole.Admin))
+				claims.Add(new Claim(ClaimTypes.Role, nameof(UserRole.Admin)));
+
+			if (roles.HasFlag(UserRole.Manager))
+				claims.Add(new Claim(ClaimTypes.Role, nameof(UserRole.Manager)));
 
 			var seurityKey = new SymmetricSecurityKey(
 				Encoding.UTF8.GetBytes(key));

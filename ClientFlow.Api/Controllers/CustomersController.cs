@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using ClientFlow.Application.Customers;
 using ClientFlow.Application.Exceptions;
 using ClientFlow.Domain.Entities;
+using ClientFlow.Domain.Enums;
 
 namespace ClientFlow.Api.Controllers
 {
@@ -79,6 +80,7 @@ namespace ClientFlow.Api.Controllers
 		/// </summary>
 		/// <param name="customer"></param>
 		/// <returns></returns>
+		[Authorize(Roles = nameof(UserRole.Admin))]
 		[HttpPost]
 		public async Task<IActionResult> AddCustomer([FromBody]Customer customer)
 		{
@@ -97,6 +99,7 @@ namespace ClientFlow.Api.Controllers
 		/// <param name="id"></param>
 		/// <param name="customer"></param>
 		/// <returns></returns>
+		[Authorize(Roles = nameof(UserRole.Admin))]
 		[HttpPut("{id}")]
 		public async Task<IActionResult> UpdateCustomer(Guid id,Customer customer)
 		{
@@ -120,6 +123,7 @@ namespace ClientFlow.Api.Controllers
 		/// </summary>
 		/// <param name="id"></param>
 		/// <returns></returns>
+		[Authorize(Roles = nameof(UserRole.Admin))]
 		[HttpDelete("{id}")]
 		public async Task<IActionResult> DeleteCustomer(Guid id)
 		{

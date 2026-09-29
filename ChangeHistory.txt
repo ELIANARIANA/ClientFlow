@@ -1,6 +1,10 @@
 CLIENTFLOW - CHANGE HISTORY
 ===========================
 
+[2026-09-29]
+	- ClientFlow.Api - CustomersController: require Admin role for
+		AddCustomer(), UpdateCustomer() and DeleteCustomer() endpoints
+
 [2026-09-28]
 	- ClientFlow.Domain - UserRole: correct UserRole flag enum values
 
