@@ -21,9 +21,9 @@ namespace ClientFlow.Application.Services
 		public AuthService(IUserRepository userRepository, IPasswordHasher passwordHasher, IJwtTokenService jwtTokenService,
 			IValidator<RegisterRequest> registerValidator)
 		{
-			_userRepository  = userRepository;
-			_passwordHasher  = passwordHasher;
-			_jwtTokenService = jwtTokenService;
+			_userRepository    = userRepository;
+			_passwordHasher    = passwordHasher;
+			_jwtTokenService   = jwtTokenService;
 			_registerValidator = registerValidator;
 		}
 		#endregion Constructor
