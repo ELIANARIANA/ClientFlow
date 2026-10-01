@@ -1,6 +1,10 @@
 CLIENTFLOW - CHANGE HISTORY
 ===========================
 
+[2026-10-01]
+	- ClientFlow.Infrastructure: add AdminSeeder to seed Admin user and
+		role
+
 [2026-09-29]
 	- ClientFlow.Api - CustomersController: require Admin role for
 		AddCustomer(), UpdateCustomer() and DeleteCustomer() endpoints

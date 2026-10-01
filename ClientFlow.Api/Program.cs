@@ -27,7 +27,7 @@ namespace ClientFlow.Api
 		/// The main entry point for the application.
 		/// </summary>
 		/// <param name="args"></param>
-		public static void Main(string[] args)
+		public static async Task Main(string[] args)
 		{ 
 			var builder = WebApplication.CreateBuilder(args);
 
@@ -56,6 +56,7 @@ namespace ClientFlow.Api
 			builder.Services.AddScoped<IPasswordHasher, PasswordHasher>();
 			builder.Services.AddScoped<IJwtTokenService, JwtTokenService>();
 			builder.Services.AddScoped<AuthService>();
+			builder.Services.AddScoped<AdminSeeder>();
 
 			builder.Services.AddValidatorsFromAssemblyContaining<RegisterRequestValidator>();
 
@@ -134,6 +135,11 @@ namespace ClientFlow.Api
 					.GetRequiredService<AppDbContext>();
 
 				dbContext.Database.Migrate();
+
+				var adminSeeder = scope.ServiceProvider
+					.GetRequiredService<AdminSeeder>();
+
+				await adminSeeder.SeederAsync();
 			}
 
 			// Configure the HTTP request pipeline.
