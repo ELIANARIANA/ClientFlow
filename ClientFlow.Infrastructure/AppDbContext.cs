@@ -1,6 +1,6 @@
-﻿using ClientFlow.Domain.Entities;
+﻿using Microsoft.EntityFrameworkCore;
 
-using Microsoft.EntityFrameworkCore;
+using ClientFlow.Domain.Entities;
 
 namespace ClientFlow.Infrastructure
 {
