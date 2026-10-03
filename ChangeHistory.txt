@@ -1,6 +1,9 @@
 CLIENTFLOW - CHANGE HISTORY
 ===========================
 
+[2026-10-03]
+	- ClientFlow.Api - AuthController: disable public Register() endpoint
+
 [2026-10-01]
 	- ClientFlow.Infrastructure: add AdminSeeder to seed Admin user and
 		role

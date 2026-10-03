@@ -38,6 +38,7 @@ namespace ClientFlow.Api.Controllers
 		/// <param name="request"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
+		[NonAction]
 		[AllowAnonymous]
 		[HttpPost("register")]
 		public async Task<ActionResult<RegisterResponse>> Register(RegisterRequest request, CancellationToken cancellationToken)
