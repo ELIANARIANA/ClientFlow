@@ -15,6 +15,7 @@ using ClientFlow.Infrastructure.Repositories;
 using ClientFlow.Infrastructure.Security;
 using ClientFlow.Api.Middleware;
 using ClientFlow.Application.Validators.Auth;
+using ClientFlow.Application.Users;
 
 namespace ClientFlow.Api
 {
@@ -57,6 +58,9 @@ namespace ClientFlow.Api
 			builder.Services.AddScoped<IJwtTokenService, JwtTokenService>();
 			builder.Services.AddScoped<AuthService>();
 			builder.Services.AddScoped<AdminSeeder>();
+
+			builder.Services.AddScoped<IUserService, UserService>();
+			builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 			builder.Services.AddValidatorsFromAssemblyContaining<RegisterRequestValidator>();
 

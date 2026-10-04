@@ -1,6 +1,9 @@
 CLIENTFLOW - CHANGE HISTORY
 ===========================
 
+[2026-10-04]
+	- ClientFlow.Api: add UserController
+
 [2026-10-03]
 	- ClientFlow.Api - AuthController: disable public Register() endpoint
 

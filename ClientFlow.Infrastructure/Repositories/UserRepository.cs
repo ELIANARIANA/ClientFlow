@@ -32,6 +32,37 @@ namespace ClientFlow.Infrastructure.Repositories
 
 			await _context.SaveChangesAsync(cancellationToken);
 		}
+
+		public async Task<List<User>> GetAsync()
+		{
+			return await _context.Users.ToListAsync();
+		}
+
+		public async Task<User?> UpdateAsync(Guid id, User user)
+		{
+			var existingUser = await _context.Users.FirstOrDefaultAsync(x => x.Id == id);
+			
+			if (existingUser == null)
+				return null;
+
+			_context.Entry(existingUser).CurrentValues.SetValues(user);
+			
+			await _context.SaveChangesAsync();
+			return user;
+		}
+
+		public async Task<User?> DeleteAsync(Guid id)
+		{
+			var existingUser = await _context.Users.FirstOrDefaultAsync(x => x.Id == id);
+
+			if (existingUser == null)
+				return await Task.FromResult<User?>(null);
+
+			_context.Users.Remove(existingUser);
+			await _context.SaveChangesAsync();
+
+			return existingUser;
+		}
 		#endregion Public Methods
 	}
 }
