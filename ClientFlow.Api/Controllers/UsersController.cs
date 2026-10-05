@@ -1,8 +1,8 @@
-﻿using ClientFlow.Application.Exceptions;
+﻿using Microsoft.AspNetCore.Mvc;
+
+using ClientFlow.Application.Exceptions;
 using ClientFlow.Application.Users;
 using ClientFlow.Domain.Entities;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
 
 namespace ClientFlow.Api.Controllers
 {
