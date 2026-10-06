@@ -40,7 +40,6 @@ namespace ClientFlow.Api.Controllers
 		/// Gets a customer by their ID.
 		/// </summary>
 		/// <param name="id"></param>
-		/// <returns></returns>
 		[HttpGet("{id}")]
 		public async Task<IActionResult> GetCustomerById(Guid id)
 		{
@@ -59,10 +58,7 @@ namespace ClientFlow.Api.Controllers
 			return Ok(customer);
 		}
 
-		/// <summary>
-		/// Gets customers.
-		/// </summary>
-		/// <returns></returns>
+		/// <summary> Gets customers.</summary>
 		[HttpGet]
 		public async Task<IActionResult> GetCustomers()
 		{
@@ -79,7 +75,6 @@ namespace ClientFlow.Api.Controllers
 		/// Adds a new customer.
 		/// </summary>
 		/// <param name="customer"></param>
-		/// <returns></returns>
 		[Authorize(Roles = nameof(UserRole.Admin))]
 		[HttpPost]
 		public async Task<IActionResult> AddCustomer([FromBody]Customer customer)
@@ -98,7 +93,6 @@ namespace ClientFlow.Api.Controllers
 		/// </summary>
 		/// <param name="id"></param>
 		/// <param name="customer"></param>
-		/// <returns></returns>
 		[Authorize(Roles = nameof(UserRole.Admin))]
 		[HttpPut("{id}")]
 		public async Task<IActionResult> UpdateCustomer(Guid id,Customer customer)
@@ -122,7 +116,6 @@ namespace ClientFlow.Api.Controllers
 		/// Deletes a customer by their ID.
 		/// </summary>
 		/// <param name="id"></param>
-		/// <returns></returns>
 		[Authorize(Roles = nameof(UserRole.Admin))]
 		[HttpDelete("{id}")]
 		public async Task<IActionResult> DeleteCustomer(Guid id)
@@ -148,7 +141,6 @@ namespace ClientFlow.Api.Controllers
 		/// Validates the customer object to ensure it has required fields.
 		/// </summary>
 		/// <param name="customer"></param>
-		/// <returns></returns>
 		static bool IsValidCustomer(Customer customer)
 		{
 			try
