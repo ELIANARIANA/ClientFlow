@@ -1,9 +1,7 @@
-﻿using ClientFlow.Application.Interfaces;
+﻿using Microsoft.EntityFrameworkCore;
+
+using ClientFlow.Application.Interfaces;
 using ClientFlow.Domain.Entities;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ClientFlow.Infrastructure.Repositories
 {
