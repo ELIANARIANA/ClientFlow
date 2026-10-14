@@ -16,6 +16,7 @@ using ClientFlow.Infrastructure.Security;
 using ClientFlow.Api.Middleware;
 using ClientFlow.Application.Validators.Auth;
 using ClientFlow.Application.Users;
+using ClientFlow.Application.Validators.User;
 
 namespace ClientFlow.Api
 {
@@ -63,6 +64,7 @@ namespace ClientFlow.Api
 			builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 			builder.Services.AddValidatorsFromAssemblyContaining<RegisterRequestValidator>();
+			builder.Services.AddValidatorsFromAssemblyContaining<AddUserRequestValidator>();
 
 			// Authentication
 			builder.Services

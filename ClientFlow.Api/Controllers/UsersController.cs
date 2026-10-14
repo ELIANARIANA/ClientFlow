@@ -3,6 +3,7 @@
 using ClientFlow.Application.Exceptions;
 using ClientFlow.Application.Users;
 using ClientFlow.Domain.Entities;
+using ClientFlow.Application.DTOs.User;
 
 namespace ClientFlow.Api.Controllers
 {
@@ -36,18 +37,18 @@ namespace ClientFlow.Api.Controllers
 		/// <summary>
 		/// Adds a new user.
 		/// </summary>
-		/// <param name="user"></param>
+		/// <param name="request"></param>
 		/// <returns></returns>
 		[HttpPost]
-		public async Task<IActionResult> AddUser([FromBody]User user)
+		public async Task<IActionResult> AddUser([FromBody]AddUserRequest request)
 		{
 			_logger.LogInformation("Adding new user...");
 
-			await _userService.AddUserAsync(user, CancellationToken.None);
+			await _userService.AddUserAsync(request, CancellationToken.None);
 
-			_logger.LogInformation($"User with ID: {user.Id} created successfully.");
+			//_logger.LogInformation($"User with ID: {user.Id} created successfully.");
 
-			return Ok(new { Message = "User created successfully.", User = user });
+			return Ok(new { Message = "User created successfully.", AddUserRequest = request });
 		}
 
 		/// <summary>
