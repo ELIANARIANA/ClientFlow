@@ -40,15 +40,15 @@ namespace ClientFlow.Api.Controllers
 		/// <param name="request"></param>
 		/// <returns></returns>
 		[HttpPost]
-		public async Task<IActionResult> AddUser([FromBody]AddUserRequest request)
+		public async Task<ActionResult<AddUserResponse>> AddUser([FromBody]AddUserRequest request)
 		{
 			_logger.LogInformation("Adding new user...");
 
-			await _userService.AddUserAsync(request, CancellationToken.None);
+			var response = await _userService.AddUserAsync(request, CancellationToken.None);
 
-			//_logger.LogInformation($"User with ID: {user.Id} created successfully.");
+			_logger.LogInformation($"User with ID: {response.Id} created successfully.");
 
-			return Ok(new { Message = "User created successfully.", AddUserRequest = request });
+			return Ok(new { Message = "User created successfully.", AddUserResponse = response });
 		}
 
 		/// <summary>

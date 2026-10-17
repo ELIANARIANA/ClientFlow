@@ -1,6 +1,10 @@
 CLIENTFLOW - CHANGE HISTORY
 ===========================
 
+[2026-10-17]
+	- ClientFlow.Api - UserController - AddUser(): now returns
+		AddUserResponse
+
 [2026-10-14]
 	- ClientFlow.Api - UserController - AddUser(): add AddUserRequest
 

@@ -31,7 +31,7 @@ namespace ClientFlow.Application.Users
 			return await _userRepository.GetByEmailAsync(email, cancellationToken);
 		}
 
-		public async Task AddUserAsync(AddUserRequest request, CancellationToken cancellationToken)
+		public async Task<AddUserResponse> AddUserAsync(AddUserRequest request, CancellationToken cancellationToken)
 		{
 			var validationResult =
 			await _addUserValidator.ValidateAsync(
@@ -62,6 +62,14 @@ namespace ClientFlow.Application.Users
 			var user = new User(email, passwordHash, (UserRole)request.Role);
 
 			await _userRepository.AddAsync(user, cancellationToken);
+
+			return new AddUserResponse
+			{
+				Id        = user.Id,
+				Email     = user.Email,
+				Role      = user.Role,
+				CreatedAt = user.CreatedAt
+			};
 		}
 
 		public async Task<List<User>> GetUsersAsync()
