@@ -2,7 +2,6 @@
 
 using ClientFlow.Application.Exceptions;
 using ClientFlow.Application.Users;
-using ClientFlow.Domain.Entities;
 using ClientFlow.Application.DTOs.User;
 
 namespace ClientFlow.Api.Controllers
@@ -71,15 +70,21 @@ namespace ClientFlow.Api.Controllers
 		/// Updates a user by their ID.
 		/// </summary>
 		/// <param name="id"></param>
-		/// <param name="user"></param>
+		/// <param name="request"></param>
 		/// <returns></returns>
 		[HttpPut("{id}")]
-		public async Task<IActionResult> UpdateUser(Guid id, [FromBody]User user)
+		public async Task<IActionResult> UpdateUser(Guid id, [FromBody]UpdateUserRequest request)
 		{
-			_logger.LogInformation("Updating user...");
+			_logger.LogInformation($"Updating user with ID: {id}...");
 
-			await _userService.UpdateUserAsync(id, user);
-			
+			var result = await _userService.UpdateUserAsync(id, request);
+
+			if (result == null)
+			{
+				_logger.LogWarning($"User with ID: {id} not found!");
+				throw new NotFoundException($"User with ID: {id} not found.");
+			}
+
 			_logger.LogInformation($"User with ID: {id} updated successfully.");
 			
 			return Ok(new { Message = "User updated successfully." });

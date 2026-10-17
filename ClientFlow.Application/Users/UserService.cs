@@ -14,14 +14,17 @@ namespace ClientFlow.Application.Users
 		private readonly IUserRepository _userRepository;
 		private readonly IPasswordHasher _passwordHasher;
 		private readonly IValidator<AddUserRequest> _addUserValidator;
+		private readonly IValidator<UpdateUserRequest> _updateUserValidator;
 		#endregion Members
 
 		#region Constructor
-		public UserService(IUserRepository userRepository, IPasswordHasher passwordHasher, IValidator<AddUserRequest> addUserValidator)
+		public UserService(IUserRepository userRepository, IPasswordHasher passwordHasher, IValidator<AddUserRequest> addUserValidator,
+		IValidator<UpdateUserRequest> updateUserValidator)
 		{
 			_userRepository = userRepository;
 			_passwordHasher   = passwordHasher;
 			_addUserValidator = addUserValidator;
+			_updateUserValidator = updateUserValidator;
 		}
 		#endregion Constructor
 
@@ -77,8 +80,26 @@ namespace ClientFlow.Application.Users
 			return await _userRepository.GetAsync();
 		}
 
-		public async Task<User?> UpdateUserAsync(Guid id, User user)
+		public async Task<User?> UpdateUserAsync(Guid id, UpdateUserRequest request)
 		{
+			var validationResult = await _updateUserValidator.ValidateAsync(request);
+
+			if (!validationResult.IsValid)
+			{
+				var errors = validationResult
+					.Errors
+					.GroupBy(x => x.PropertyName)
+					.ToDictionary(
+						x => x.Key,
+						x => x.Select(e => e.ErrorMessage).ToArray());
+
+				throw new Exceptions.ValidationException(errors);
+			}
+
+			var passwordHash = _passwordHasher.Hash(request.Password);
+
+			var user = new User(request.Email, passwordHash, (UserRole)request.Role);
+
 			return await _userRepository.UpdateAsync(id, user);
 		}
 

@@ -2,6 +2,7 @@
 
 using ClientFlow.Application.Interfaces;
 using ClientFlow.Domain.Entities;
+using ClientFlow.Domain.Enums;
 
 namespace ClientFlow.Infrastructure.Repositories
 {
@@ -43,8 +44,7 @@ namespace ClientFlow.Infrastructure.Repositories
 			if (existingUser == null)
 				return null;
 
-			_context.Entry(existingUser).CurrentValues.SetValues(user);
-			
+			existingUser.Update(user.Email, user.PasswordHash, (UserRole)user.Role);
 			await _context.SaveChangesAsync();
 			return user;
 		}

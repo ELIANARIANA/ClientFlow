@@ -24,6 +24,14 @@ namespace ClientFlow.Domain.Entities
 			CreatedAt    = DateTimeOffset.UtcNow;
 		}
 
+		public void Update(string email, string passwordHash, UserRole role)
+		{
+			Email        = email;
+			PasswordHash = passwordHash;
+			Role         = (int)role;
+			UpdatedAt    = DateTimeOffset.UtcNow;
+		}
+
 		public void UpdatePassword(string passwordHash)
 		{
 			PasswordHash = passwordHash;
