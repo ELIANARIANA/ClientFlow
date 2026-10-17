@@ -7,7 +7,7 @@ namespace ClientFlow.Application.Users
 	{
 		Task<User?> GetUserByEmailAsync(string email, CancellationToken cancellationToken);
 		Task<AddUserResponse> AddUserAsync(AddUserRequest request, CancellationToken cancellationToken);
-		Task<List<User>> GetUsersAsync();
+		Task<List<GetUsersResponse>> GetUsersAsync();
 		Task<User?> UpdateUserAsync(Guid id, UpdateUserRequest request);
 		Task<User?> DeleteUserAsync(Guid id);
 	}

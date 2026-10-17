@@ -75,9 +75,17 @@ namespace ClientFlow.Application.Users
 			};
 		}
 
-		public async Task<List<User>> GetUsersAsync()
+		public async Task<List<GetUsersResponse>> GetUsersAsync()
 		{
-			return await _userRepository.GetAsync();
+			var users = await _userRepository.GetAsync();
+			
+			return users.Select(u => new GetUsersResponse
+			{
+				Email     = u.Email,
+				Role      = u.Role,
+				CreatedAt = u.CreatedAt,
+				UpdatedAt = u.UpdatedAt
+			}).ToList();
 		}
 
 		public async Task<User?> UpdateUserAsync(Guid id, UpdateUserRequest request)
