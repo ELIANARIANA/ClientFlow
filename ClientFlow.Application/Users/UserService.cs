@@ -81,6 +81,7 @@ namespace ClientFlow.Application.Users
 			
 			return users.Select(u => new GetUsersResponse
 			{
+				Id        = u.Id,
 				Email     = u.Email,
 				Role      = u.Role,
 				CreatedAt = u.CreatedAt,

@@ -1,6 +1,10 @@
 CLIENTFLOW - CHANGE HISTORY
 ===========================
 
+[2026-10-18]
+	- ClientFlow.Application - UserService - GetUsersAsync(): now returns
+		also Id filed in GetUsersResponse()
+
 [2026-10-17]
 	- ClientFlow.Application - UserService - GetUsersAsync(): now returns
 		GetUsersResponse()
