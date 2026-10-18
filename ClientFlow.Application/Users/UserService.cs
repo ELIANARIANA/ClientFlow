@@ -21,9 +21,9 @@ namespace ClientFlow.Application.Users
 		public UserService(IUserRepository userRepository, IPasswordHasher passwordHasher, IValidator<AddUserRequest> addUserValidator,
 		IValidator<UpdateUserRequest> updateUserValidator)
 		{
-			_userRepository = userRepository;
-			_passwordHasher   = passwordHasher;
-			_addUserValidator = addUserValidator;
+			_userRepository      = userRepository;
+			_passwordHasher      = passwordHasher;
+			_addUserValidator    = addUserValidator;
 			_updateUserValidator = updateUserValidator;
 		}
 		#endregion Constructor
