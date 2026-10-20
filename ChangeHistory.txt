@@ -1,6 +1,10 @@
 CLIENTFLOW - CHANGE HISTORY
 ===========================
 
+[2026-10-20]
+	- ClientFlow.Api - UsersController: require Admin role for
+		AddUser(), UpdateUser() and DeleteUser() endpoints
+
 [2026-10-18]
 	- ClientFlow.Application - UserService - GetUsersAsync(): now returns
 		also Id filed in GetUsersResponse()

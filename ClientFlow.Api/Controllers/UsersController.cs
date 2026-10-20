@@ -1,15 +1,17 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 using ClientFlow.Application.Exceptions;
 using ClientFlow.Application.Users;
 using ClientFlow.Application.DTOs.User;
+using ClientFlow.Domain.Enums;
 
 namespace ClientFlow.Api.Controllers
 {
 	/// <summary>
 	/// Controller for managing users.
 	/// </summary>
-	//[Authorize]
+	[Authorize]
 	[ApiController]
 	[Route("api/users")]
 	public class UsersController : Controller
@@ -38,6 +40,7 @@ namespace ClientFlow.Api.Controllers
 		/// </summary>
 		/// <param name="request"></param>
 		/// <returns></returns>
+		[Authorize(Roles = nameof(UserRole.Admin))]
 		[HttpPost]
 		public async Task<ActionResult<AddUserResponse>> AddUser([FromBody]AddUserRequest request)
 		{
@@ -72,6 +75,7 @@ namespace ClientFlow.Api.Controllers
 		/// <param name="id"></param>
 		/// <param name="request"></param>
 		/// <returns></returns>
+		[Authorize(Roles = nameof(UserRole.Admin))]
 		[HttpPut("{id}")]
 		public async Task<IActionResult> UpdateUser(Guid id, [FromBody]UpdateUserRequest request)
 		{
@@ -96,6 +100,7 @@ namespace ClientFlow.Api.Controllers
 		/// <param name="id"></param>
 		/// <returns></returns>
 		/// <exception cref="NotFoundException"></exception>
+		[Authorize(Roles = nameof(UserRole.Admin))]
 		[HttpDelete("{id}")]
 		public async Task<IActionResult> DeleteUser(Guid id)
 		{
