@@ -30,7 +30,7 @@ namespace ClientFlow.Api.Controllers
 		/// <param name="customerService"></param>
 		public CustomersController(ILogger<CustomersController> logger, ICustomerService customerService)
 		{
-			_logger = logger;
+			_logger          = logger;
 			_customerService = customerService;
 		}
 		#endregion Constructor

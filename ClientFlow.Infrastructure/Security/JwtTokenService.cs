@@ -72,10 +72,10 @@ namespace ClientFlow.Infrastructure.Security
 				SecurityAlgorithms.HmacSha256);
 
 			var token = new JwtSecurityToken(
-				issuer: issuer,
+				issuer  : issuer,
 				audience: audience,
-				claims: claims,
-				expires: DateTime.UtcNow.AddMinutes(expirationMinutes),
+				claims  : claims,
+				expires : DateTime.UtcNow.AddMinutes(expirationMinutes),
 				signingCredentials: credentials);
 
 			return new JwtSecurityTokenHandler()
