@@ -1,6 +1,10 @@
 CLIENTFLOW - CHANGE HISTORY
 ===========================
 
+[2026-10-22]
+	- ClientFlow.Api - AuthController - Login(): now checks response for null
+		and returns 401 Unauthorized if login fails
+
 [2026-10-20]
 	- ClientFlow.Api - UsersController: require Admin role for
 		AddUser(), UpdateUser() and DeleteUser() endpoints

@@ -70,15 +70,21 @@ namespace ClientFlow.Application.Services
 			};
 		}
 
-		public async Task<LoginResponse> LoginAsync(LoginRequest request, CancellationToken cancellationToken = default)
+		public async Task<LoginResponse?> LoginAsync(LoginRequest request, CancellationToken cancellationToken = default)
 		{
 			var user = await _userRepository.GetByEmailAsync(request.Email, cancellationToken);
 
 			if (user == null)
+			{
+				return null;
 				throw new InvalidOperationException("Invalid email.");
+			}
 
 			if (!_passwordHasher.Verify(request.Password, user.PasswordHash))
+			{
+				return null;
 				throw new UnauthorizedAccessException("Invalid password.");
+			}
 
 			return new LoginResponse
 			{

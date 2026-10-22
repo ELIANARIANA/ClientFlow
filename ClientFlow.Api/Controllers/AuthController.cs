@@ -60,6 +60,9 @@ namespace ClientFlow.Api.Controllers
 		{
 			var response = await _authService.LoginAsync(request, cancellationToken);
 
+			if (response == null)
+				return Unauthorized(new { message = "Email or password is incorrect" });
+
 			return Ok(response);
 		}
 		#endregion Public Methods
