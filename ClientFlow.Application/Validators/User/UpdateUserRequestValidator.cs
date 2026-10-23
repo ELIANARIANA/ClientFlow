@@ -16,6 +16,7 @@ namespace ClientFlow.Application.Validators.User
 				.WithMessage("Please enter a valid E-Mail.")
 				.MaximumLength(255)
 				.WithMessage("E-Mail must be a maximum of 255 characters long.");
+
 			RuleFor(x => x.Password)
 				.NotEmpty()
 				.WithMessage("Password must not be empty.")
