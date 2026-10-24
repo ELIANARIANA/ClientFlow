@@ -75,7 +75,7 @@ namespace ClientFlow.Api.Controllers
 		/// <summary>
 		/// Adds a new customer.
 		/// </summary>
-		/// <param name="customer"></param>
+		/// <param name="request"></param>
 		[Authorize(Roles = nameof(UserRole.Admin))]
 		[HttpPost]
 		public async Task<IActionResult> AddCustomer([FromBody]CustomerRequest request)
