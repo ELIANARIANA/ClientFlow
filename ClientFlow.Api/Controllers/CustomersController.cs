@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 
 using ClientFlow.Application.Customers;
+using ClientFlow.Application.DTOs.Customer;
 using ClientFlow.Application.Exceptions;
 using ClientFlow.Domain.Entities;
 using ClientFlow.Domain.Enums;
@@ -77,11 +78,11 @@ namespace ClientFlow.Api.Controllers
 		/// <param name="customer"></param>
 		[Authorize(Roles = nameof(UserRole.Admin))]
 		[HttpPost]
-		public async Task<IActionResult> AddCustomer([FromBody]Customer customer)
+		public async Task<IActionResult> AddCustomer([FromBody]AddCustomerRequest request)
 		{
 			_logger.LogInformation("Adding new customer...");
 
-			await _customerService.AddCustomerAsync(customer);
+			var customer = await _customerService.AddCustomerAsync(request);
 
 			_logger.LogInformation($"Customer with ID: {customer.Id} created successfully.");
 

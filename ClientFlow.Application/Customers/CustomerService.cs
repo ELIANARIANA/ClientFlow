@@ -1,4 +1,7 @@
-﻿using ClientFlow.Domain.Entities;
+﻿using FluentValidation;
+
+using ClientFlow.Application.DTOs.Customer;
+using ClientFlow.Domain.Entities;
 
 namespace ClientFlow.Application.Customers
 {
@@ -6,12 +9,14 @@ namespace ClientFlow.Application.Customers
 	{
 		#region Members
 		private readonly ICustomerRepository _customerRepository;
+		private readonly IValidator<AddCustomerRequest> _addCustomerValidator;
 		#endregion Members
 
 		#region Constructor
-		public CustomerService(ICustomerRepository customerRepository)
+		public CustomerService(ICustomerRepository customerRepository, IValidator<AddCustomerRequest> addCustomerValidator)
 		{
 			_customerRepository = customerRepository;
+			_addCustomerValidator = addCustomerValidator;
 		}
 		#endregion Constructor
 
@@ -26,9 +31,32 @@ namespace ClientFlow.Application.Customers
 			return await _customerRepository.GetAsync();
 		}
 
-		public async Task<Customer> AddCustomerAsync(Customer customer)
+		public async Task<Customer> AddCustomerAsync(AddCustomerRequest request)
 		{
-			return await _customerRepository.AddAsync(customer);
+			var validationResult = await _addCustomerValidator.ValidateAsync(request);
+
+			if(!validationResult.IsValid)
+			{
+				var errors = validationResult
+					.Errors
+					.GroupBy(x => x.PropertyName)
+					.ToDictionary(
+						x => x.Key,
+						x => x.Select(e => e.ErrorMessage).ToArray());
+
+				throw new Exceptions.ValidationException(errors);
+			}
+
+			return await _customerRepository.AddAsync(new Customer
+			{
+				Id          = Guid.NewGuid(),
+				FirstName   = request.FirstName,
+				LastName    = request.LastName,
+				Email       = request.Email,
+				Phone       = request.Phone,
+				CompanyName = request.CompanyName,
+				CreatedAt   = DateTimeOffset.UtcNow,
+			});
 		}
 
 		public async Task<Customer?> UpdateCustomerAsync(Guid id, Customer customer)

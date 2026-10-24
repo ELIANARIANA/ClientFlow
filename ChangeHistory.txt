@@ -1,6 +1,9 @@
 CLIENTFLOW - CHANGE HISTORY
 ===========================
 
+[2026-10-24]
+	- ClientFlow.Api - CustomersController - addCustomer(): add AddCustomerRequest
+
 [2026-10-22]
 	- ClientFlow.Api - AuthController - Login(): now checks response for null
 		and returns 401 Unauthorized if login fails

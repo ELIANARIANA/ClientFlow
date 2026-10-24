@@ -1,4 +1,5 @@
-﻿using ClientFlow.Domain.Entities;
+﻿using ClientFlow.Application.DTOs.Customer;
+using ClientFlow.Domain.Entities;
 
 namespace ClientFlow.Application.Customers
 {
@@ -6,7 +7,7 @@ namespace ClientFlow.Application.Customers
 	{
 		Task<Customer?> GetCustomerByIdAsync(Guid id);
 		Task<List<Customer>> GetCustomersAsync();
-		Task<Customer> AddCustomerAsync(Customer customer);
+		Task<Customer> AddCustomerAsync(AddCustomerRequest request);
 		Task<Customer?> UpdateCustomerAsync(Guid id, Customer customer);
 		Task<Customer?> DeleteCustomerAsync(Guid id);
 	}
