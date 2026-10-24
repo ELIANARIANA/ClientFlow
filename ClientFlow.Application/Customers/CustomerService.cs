@@ -59,9 +59,32 @@ namespace ClientFlow.Application.Customers
 			});
 		}
 
-		public async Task<Customer?> UpdateCustomerAsync(Guid id, Customer customer)
+		public async Task<Customer?> UpdateCustomerAsync(Guid id, CustomerRequest request)
 		{
-			return await _customerRepository.UpdateAsync(id, customer);
+			var validationResult = await _customerValidator.ValidateAsync(request);
+
+			if (!validationResult.IsValid)
+			{
+				var errors = validationResult
+					.Errors
+					.GroupBy(x => x.PropertyName)
+					.ToDictionary(
+						x => x.Key,
+						x => x.Select(e => e.ErrorMessage).ToArray());
+
+				throw new Exceptions.ValidationException(errors);
+			}
+
+			return await _customerRepository.UpdateAsync(id, new Customer
+			{
+				Id          = id,
+				FirstName   = request.FirstName,
+				LastName    = request.LastName,
+				Email       = request.Email,
+				Phone       = request.Phone,
+				CompanyName = request.CompanyName,
+				UpdatedAt   = DateTimeOffset.UtcNow,
+			});
 		}
 
 		public async Task<Customer?> DeleteCustomerAsync(Guid id)

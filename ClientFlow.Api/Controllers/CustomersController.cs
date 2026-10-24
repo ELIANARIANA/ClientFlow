@@ -93,14 +93,14 @@ namespace ClientFlow.Api.Controllers
 		/// Updates an existing customer.
 		/// </summary>
 		/// <param name="id"></param>
-		/// <param name="customer"></param>
+		/// <param name="request"></param>
 		[Authorize(Roles = nameof(UserRole.Admin))]
 		[HttpPut("{id}")]
-		public async Task<IActionResult> UpdateCustomer(Guid id,Customer customer)
+		public async Task<IActionResult> UpdateCustomer(Guid id, CustomerRequest request)
 		{
 			_logger.LogInformation($"Updating customer with ID: '{id}'...");
 
-			var result = await _customerService.UpdateCustomerAsync(id, customer);
+			var result = await _customerService.UpdateCustomerAsync(id, request);
 
 			if (result == null)
 			{
@@ -110,7 +110,7 @@ namespace ClientFlow.Api.Controllers
 			
 			_logger.LogInformation($"Customer with ID: {id} updated successfully.");
 
-			return Ok(new { Message = "Customer updated successfully.", Customer = customer });
+			return Ok(new { Message = "Customer updated successfully.", Customer = result });
 		}
 
 		/// <summary>

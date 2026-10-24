@@ -2,6 +2,8 @@ CLIENTFLOW - CHANGE HISTORY
 ===========================
 
 [2026-10-24]
+	- ClientFlow.Api - CustomersController - UpdateCustomer(): use CustomerRequest
+		in request
 	- ClientFlow.Api - CustomersController - addCustomer(): add CustomerRequest
 
 [2026-10-22]
