@@ -78,7 +78,7 @@ namespace ClientFlow.Api.Controllers
 		/// <param name="customer"></param>
 		[Authorize(Roles = nameof(UserRole.Admin))]
 		[HttpPost]
-		public async Task<IActionResult> AddCustomer([FromBody]AddCustomerRequest request)
+		public async Task<IActionResult> AddCustomer([FromBody]CustomerRequest request)
 		{
 			_logger.LogInformation("Adding new customer...");
 

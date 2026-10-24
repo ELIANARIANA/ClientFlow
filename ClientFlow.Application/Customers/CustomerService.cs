@@ -9,14 +9,14 @@ namespace ClientFlow.Application.Customers
 	{
 		#region Members
 		private readonly ICustomerRepository _customerRepository;
-		private readonly IValidator<AddCustomerRequest> _addCustomerValidator;
+		private readonly IValidator<CustomerRequest> _customerValidator;
 		#endregion Members
 
 		#region Constructor
-		public CustomerService(ICustomerRepository customerRepository, IValidator<AddCustomerRequest> addCustomerValidator)
+		public CustomerService(ICustomerRepository customerRepository, IValidator<CustomerRequest> customerValidator)
 		{
 			_customerRepository = customerRepository;
-			_addCustomerValidator = addCustomerValidator;
+			_customerValidator = customerValidator;
 		}
 		#endregion Constructor
 
@@ -31,9 +31,9 @@ namespace ClientFlow.Application.Customers
 			return await _customerRepository.GetAsync();
 		}
 
-		public async Task<Customer> AddCustomerAsync(AddCustomerRequest request)
+		public async Task<Customer> AddCustomerAsync(CustomerRequest request)
 		{
-			var validationResult = await _addCustomerValidator.ValidateAsync(request);
+			var validationResult = await _customerValidator.ValidateAsync(request);
 
 			if(!validationResult.IsValid)
 			{

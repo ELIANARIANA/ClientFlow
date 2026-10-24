@@ -2,7 +2,7 @@
 
 namespace ClientFlow.Application.DTOs.Customer
 {
-	public class AddCustomerRequest
+	public class CustomerRequest
 	{
 		public string FirstName    { get; set; } = string.Empty;
 		public string LastName     { get; set; } = string.Empty;

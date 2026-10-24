@@ -5,9 +5,9 @@ using ClientFlow.Application.DTOs.Customer;
 
 namespace ClientFlow.Application.Validators.Customer
 {
-	public class AddCustomerRequestValidator : AbstractValidator<AddCustomerRequest>
+	public class CustomerRequestValidator : AbstractValidator<CustomerRequest>
 	{
-		public AddCustomerRequestValidator()
+		public CustomerRequestValidator()
 		{
 			RuleFor(x => x.FirstName)
 				.NotEmpty()
