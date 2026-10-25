@@ -70,6 +70,26 @@ namespace ClientFlow.Api.Controllers
 		}
 
 		/// <summary>
+		/// Gets a user by email address. 
+		/// </summary>
+		/// <param name="email"></param>
+		[HttpGet("{email}")]
+		public async Task<IActionResult> GetUserByEmail(string email)
+		{
+			_logger.LogInformation("Getting user by email...");
+
+			var user = await _userService.GetUserByEmailAsync(email, CancellationToken.None);
+
+			if (user == null)
+			{
+				_logger.LogWarning($"User with email: {email} not found!");
+				throw new NotFoundException($"User with email: {email} not found.");
+			}
+
+			return Ok(user);
+		}
+
+		/// <summary>
 		/// Updates a user by their ID.
 		/// </summary>
 		/// <param name="id"></param>

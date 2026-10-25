@@ -5,7 +5,7 @@ namespace ClientFlow.Application.Users
 {
 	public interface IUserService
 	{
-		Task<User?> GetUserByEmailAsync(string email, CancellationToken cancellationToken);
+		Task<GetUsersResponse> GetUserByEmailAsync(string email, CancellationToken cancellationToken);
 		Task<AddUserResponse> AddUserAsync(AddUserRequest request, CancellationToken cancellationToken);
 		Task<List<GetUsersResponse>> GetUsersAsync();
 		Task<User?> UpdateUserAsync(Guid id, UpdateUserRequest request);

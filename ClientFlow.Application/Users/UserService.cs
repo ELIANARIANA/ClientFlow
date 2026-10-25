@@ -29,9 +29,21 @@ namespace ClientFlow.Application.Users
 		#endregion Constructor
 
 		#region Public Methods
-		public async Task<User?> GetUserByEmailAsync(string email, CancellationToken cancellationToken)
+		public async Task<GetUsersResponse> GetUserByEmailAsync(string email, CancellationToken cancellationToken)
 		{
-			return await _userRepository.GetByEmailAsync(email, cancellationToken);
+			var user = await _userRepository.GetByEmailAsync(email, cancellationToken);
+
+			if (user == null)
+				throw new NotFoundException($"User with email: {email} not found.");
+
+			return new GetUsersResponse
+			{
+				Id        = user.Id,
+				Email     = user.Email,
+				Role      = user.Role,
+				CreatedAt = user.CreatedAt,
+				UpdatedAt = user.UpdatedAt
+			};
 		}
 
 		public async Task<AddUserResponse> AddUserAsync(AddUserRequest request, CancellationToken cancellationToken)

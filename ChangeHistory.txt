@@ -1,6 +1,9 @@
 CLIENTFLOW - CHANGE HISTORY
 ===========================
 
+[2026-10-25]
+	- ClientFlow.Api - UsersController: Add GetUserByEmail() endpoint
+
 [2026-10-24]
 	- ClientFlow.Api - CustomersController - UpdateCustomer(): use CustomerRequest
 		in request
