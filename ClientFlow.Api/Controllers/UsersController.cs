@@ -90,6 +90,28 @@ namespace ClientFlow.Api.Controllers
 		}
 
 		/// <summary>
+		/// Gets a user by Id. 
+		/// </summary>
+		/// <param name="id"></param>
+		[HttpGet("{id:guid}")]
+		public async Task<IActionResult> GetUserById(Guid id)
+		{
+			_logger.LogInformation("Getting user by ID...");
+
+			var user = await _userService.GetUserByIdAsync(id);
+
+			if (user == null)
+			{
+				_logger.LogWarning($"User with ID: {id} not found!");
+				throw new NotFoundException($"User with ID: {id} not found.");
+			}
+
+			_logger.LogInformation($"User with ID: {id} retrieved successfully.");
+
+			return Ok(user);
+		}
+
+		/// <summary>
 		/// Updates a user by their ID.
 		/// </summary>
 		/// <param name="id"></param>

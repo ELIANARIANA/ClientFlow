@@ -2,6 +2,7 @@ CLIENTFLOW - CHANGE HISTORY
 ===========================
 
 [2026-10-25]
+	- ClientFlow.Api - UsersController: Add GetUserById() endpoint
 	- ClientFlow.Api - UsersController: Add GetUserByEmail() endpoint
 
 [2026-10-24]

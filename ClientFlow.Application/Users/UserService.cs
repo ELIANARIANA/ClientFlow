@@ -29,6 +29,23 @@ namespace ClientFlow.Application.Users
 		#endregion Constructor
 
 		#region Public Methods
+		public async Task<GetUsersResponse> GetUserByIdAsync(Guid id)
+		{
+			var user = await _userRepository.GetByIdAsync(id);
+
+			if (user == null)
+				throw new NotFoundException($"User with ID: {id} not found.");
+
+			return new GetUsersResponse
+			{
+				Id        = user.Id,
+				Email     = user.Email,
+				Role      = user.Role,
+				CreatedAt = user.CreatedAt,
+				UpdatedAt = user.UpdatedAt
+			};
+		}
+
 		public async Task<GetUsersResponse> GetUserByEmailAsync(string email, CancellationToken cancellationToken)
 		{
 			var user = await _userRepository.GetByEmailAsync(email, cancellationToken);
