@@ -37,19 +37,19 @@ namespace ClientFlow.Infrastructure
 			modelBuilder.Entity<Customer>(entity =>
 			{
 				entity.HasKey(x => x.Id);
-				entity.Property(x => x.FirstName).IsRequired();
-				entity.Property(x => x.LastName).IsRequired();
-				entity.Property(x => x.Email).IsRequired();
-				entity.Property(x => x.Phone);
-				entity.Property(x => x.CompanyName);
+				entity.Property(x => x.FirstName).HasMaxLength(100).IsRequired();
+				entity.Property(x => x.LastName).HasMaxLength(100).IsRequired();
+				entity.Property(x => x.Email).HasMaxLength(254).IsRequired();
+				entity.Property(x => x.Phone).HasMaxLength(20);
+				entity.Property(x => x.CompanyName).HasMaxLength(200);
 				entity.Property(x => x.CreatedAt).IsRequired();
 				entity.Property(x => x.UpdatedAt);
 			});
 			modelBuilder.Entity<User>(entity =>
 			{
 				entity.HasKey(x => x.Id);
-				entity.Property(x => x.Email).IsRequired();
-				entity.Property(x => x.PasswordHash).IsRequired();
+				entity.Property(x => x.Email).HasMaxLength(254).IsRequired();
+				entity.Property(x => x.PasswordHash).HasMaxLength(256).IsRequired();
 				entity.Property(x => x.Role).IsRequired();
 				entity.Property(x => x.CreatedAt).IsRequired();
 				entity.Property(x => x.UpdatedAt);

@@ -1,6 +1,10 @@
 CLIENTFLOW - CHANGE HISTORY
 ===========================
 
+[2026-10-26]
+	- ClientFlow.Infrastructure - AppDbContext: add User and Customer entity
+		configurations with max length
+	
 [2026-10-25]
 	- ClientFlow.Api - UsersController: Add GetUserById() endpoint
 	- ClientFlow.Api - UsersController: Add GetUserByEmail() endpoint

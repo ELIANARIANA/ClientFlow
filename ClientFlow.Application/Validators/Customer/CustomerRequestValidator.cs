@@ -27,16 +27,16 @@ namespace ClientFlow.Application.Validators.Customer
 				.EmailAddress(EmailValidationMode.AspNetCoreCompatible)
 				.EmailAddress(EmailValidationMode.Net4xRegex)
 				.WithMessage("Pleas enter a valid E-Mail.")
-				.MaximumLength(255)
-				.WithMessage("E-Mail must be a maximum of 255 character long.");
+				.MaximumLength(254)
+				.WithMessage("E-Mail must be a maximum of 254 characters long.");
 
 			RuleFor(x => x.Phone)
 				.MaximumLength(20)
 				.WithMessage("Phone number must be a maximum of 20 characters long.");
 
 			RuleFor(x => x.CompanyName)
-				.MaximumLength(255)
-				.WithMessage("Company name must be a maximum of 255 characters long.");
+				.MaximumLength(200)
+				.WithMessage("Company name must be a maximum of 200 characters long.");
 		}
 	}
 }
