@@ -16,7 +16,7 @@ namespace ClientFlow.Application.Customers
 		public CustomerService(ICustomerRepository customerRepository, IValidator<CustomerRequest> customerValidator)
 		{
 			_customerRepository = customerRepository;
-			_customerValidator = customerValidator;
+			_customerValidator  = customerValidator;
 		}
 		#endregion Constructor
 
