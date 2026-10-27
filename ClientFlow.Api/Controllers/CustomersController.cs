@@ -136,33 +136,5 @@ namespace ClientFlow.Api.Controllers
 			return Ok(new { Message = "Customer deleted successfully.", Customer = result });
 		}
 		#endregion Methods
-
-		#region Helper Methods
-		/// <summary>
-		/// Validates the customer object to ensure it has required fields.
-		/// </summary>
-		/// <param name="customer"></param>
-		static bool IsValidCustomer(Customer customer)
-		{
-			try
-			{
-				if (customer == null                     ||
-				string.IsNullOrEmpty(customer.FirstName) ||
-				string.IsNullOrEmpty(customer.LastName ) ||
-				string.IsNullOrEmpty(customer.Email    ) &&
-				new MailAddress(customer.Email).Address
-				== customer.Email)
-				{
-					return false;
-				}
-
-				return true;
-			}
-			catch
-			{
-				return false;
-			}
-		}
-		#endregion Helper Methods
 	}
 }
