@@ -19,9 +19,9 @@ namespace ClientFlow.Infrastructure.Repositories
 		#endregion Constructor
 		
 		#region Public Methods
-		public async Task<Customer?> GetByIdAsync(Guid id)
+		public async Task<Customer?> GetByIdAsync(Guid customerId)
 		{
-			return await _context.Customers.FirstOrDefaultAsync(x => x.Id == id);
+			return await _context.Customers.FirstOrDefaultAsync(x => x.CustomerId == customerId);
 		}
 
 		public async Task<List<Customer>> GetAsync()
@@ -36,9 +36,9 @@ namespace ClientFlow.Infrastructure.Repositories
 			return customer;
 		}
 
-		public async Task<Customer?> UpdateAsync(Guid id, Customer customer)
+		public async Task<Customer?> UpdateAsync(Guid customerId, Customer customer)
 		{
-			var existingCustomer = await _context.Customers.FirstOrDefaultAsync(x => x.Id == id);
+			var existingCustomer = await _context.Customers.FirstOrDefaultAsync(x => x.CustomerId == customerId);
 
 			if (existingCustomer == null)
 				return null;
@@ -51,9 +51,9 @@ namespace ClientFlow.Infrastructure.Repositories
 			return customer;
 		}
 
-		public async Task<Customer?> DeleteAsync(Guid id)
+		public async Task<Customer?> DeleteAsync(Guid customerId)
 		{
-			var existingCustomer = _context.Customers.FirstOrDefault(x => x.Id == id);
+			var existingCustomer = _context.Customers.FirstOrDefault(x => x.CustomerId == customerId);
 
 			if (existingCustomer == null)
 				return await Task.FromResult<Customer?>(null);

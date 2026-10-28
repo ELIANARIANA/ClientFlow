@@ -49,7 +49,7 @@ namespace ClientFlow.Application.Customers
 
 			return await _customerRepository.AddAsync(new Customer
 			{
-				Id          = Guid.NewGuid(),
+				CustomerId  = Guid.NewGuid(),
 				FirstName   = request.FirstName,
 				LastName    = request.LastName,
 				Email       = request.Email,
@@ -59,7 +59,7 @@ namespace ClientFlow.Application.Customers
 			});
 		}
 
-		public async Task<Customer?> UpdateCustomerAsync(Guid id, CustomerRequest request)
+		public async Task<Customer?> UpdateCustomerAsync(Guid customerId, CustomerRequest request)
 		{
 			var validationResult = await _customerValidator.ValidateAsync(request);
 
@@ -75,9 +75,9 @@ namespace ClientFlow.Application.Customers
 				throw new Exceptions.ValidationException(errors);
 			}
 
-			return await _customerRepository.UpdateAsync(id, new Customer
+			return await _customerRepository.UpdateAsync(customerId, new Customer
 			{
-				Id          = id,
+				CustomerId  = customerId,
 				FirstName   = request.FirstName,
 				LastName    = request.LastName,
 				Email       = request.Email,

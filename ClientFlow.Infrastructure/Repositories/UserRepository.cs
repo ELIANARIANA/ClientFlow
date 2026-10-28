@@ -20,9 +20,9 @@ namespace ClientFlow.Infrastructure.Repositories
 		#endregion Constructor
 
 		#region Public Methods
-		public async Task<User?> GetByIdAsync(Guid id)
+		public async Task<User?> GetByIdAsync(Guid UserId)
 		{
-			return await _context.Users.FirstOrDefaultAsync(x => x.Id == id);
+			return await _context.Users.FirstOrDefaultAsync(x => x.UserId == UserId);
 		}
 
 		public async Task<User?> GetByEmailAsync(string email, CancellationToken cancellationToken = default)
@@ -42,9 +42,9 @@ namespace ClientFlow.Infrastructure.Repositories
 			return await _context.Users.ToListAsync();
 		}
 
-		public async Task<User?> UpdateAsync(Guid id, User user)
+		public async Task<User?> UpdateAsync(Guid userId, User user)
 		{
-			var existingUser = await _context.Users.FirstOrDefaultAsync(x => x.Id == id);
+			var existingUser = await _context.Users.FirstOrDefaultAsync(x => x.UserId == userId);
 			
 			if (existingUser == null)
 				return null;
@@ -54,9 +54,9 @@ namespace ClientFlow.Infrastructure.Repositories
 			return user;
 		}
 
-		public async Task<User?> DeleteAsync(Guid id)
+		public async Task<User?> DeleteAsync(Guid userId)
 		{
-			var existingUser = await _context.Users.FirstOrDefaultAsync(x => x.Id == id);
+			var existingUser = await _context.Users.FirstOrDefaultAsync(x => x.UserId == userId);
 
 			if (existingUser == null)
 				return await Task.FromResult<User?>(null);

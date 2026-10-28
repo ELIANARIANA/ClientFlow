@@ -1,6 +1,10 @@
 CLIENTFLOW - CHANGE HISTORY
 ===========================
 
+[2026-10-28]
+	- ClientFlow.Infrastructure - AppDbContext: change entity Id from Guid to long
+		and add UserId and CustomerId to entities as Guid
+
 [2026-10-26]
 	- ClientFlow.Infrastructure - AppDbContext: add User and Customer entity
 		configurations with max length

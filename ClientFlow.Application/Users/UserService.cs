@@ -38,7 +38,7 @@ namespace ClientFlow.Application.Users
 
 			return new GetUsersResponse
 			{
-				Id        = user.Id,
+				UserId    = user.UserId,
 				Email     = user.Email,
 				Role      = user.Role,
 				CreatedAt = user.CreatedAt,
@@ -55,7 +55,7 @@ namespace ClientFlow.Application.Users
 
 			return new GetUsersResponse
 			{
-				Id        = user.Id,
+				UserId    = user.UserId,
 				Email     = user.Email,
 				Role      = user.Role,
 				CreatedAt = user.CreatedAt,
@@ -97,7 +97,7 @@ namespace ClientFlow.Application.Users
 
 			return new AddUserResponse
 			{
-				Id        = user.Id,
+				UserId    = user.UserId,
 				Email     = user.Email,
 				Role      = user.Role,
 				CreatedAt = user.CreatedAt
@@ -110,7 +110,7 @@ namespace ClientFlow.Application.Users
 			
 			return users.Select(u => new GetUsersResponse
 			{
-				Id        = u.Id,
+				UserId    = u.UserId,
 				Email     = u.Email,
 				Role      = u.Role,
 				CreatedAt = u.CreatedAt,

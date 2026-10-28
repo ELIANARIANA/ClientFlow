@@ -8,7 +8,7 @@
 		{
 			var customer = new ClientFlow.Domain.Entities.Customer
 			{
-				Id          = Guid.NewGuid(),
+				CustomerId  = Guid.NewGuid(),
 				FirstName   = "John",
 				LastName    = "Doe",
 				Email       = "john.doe@example.com",
@@ -19,7 +19,7 @@
 			};
 
 			// Assert
-			Assert.NotEqual(Guid.Empty            , customer.Id         );
+			Assert.NotEqual(Guid.Empty            , customer.CustomerId );
 			Assert.Equal   ("John"                , customer.FirstName  );
 			Assert.Equal   ("Doe"                 , customer.LastName   );
 			Assert.Equal   ("john.doe@example.com", customer.Email      );
@@ -33,8 +33,8 @@
 		public void CreateCustomerWithOnlyRequiredData()
 		{
 			var customer = new ClientFlow.Domain.Entities.Customer
-			{ 
-				Id        = Guid.NewGuid(),
+			{
+				CustomerId = Guid.NewGuid(),
 				FirstName = "John",
 				LastName  = "Doe",
 				Email     = "john.doe@example.com",
@@ -42,7 +42,7 @@
 			};
 
 			// Assert
-			Assert.NotEqual(Guid.Empty            , customer.Id       );
+			Assert.NotEqual(Guid.Empty            , customer.CustomerId);
 			Assert.Equal   ("John"                , customer.FirstName);
 			Assert.Equal   ("Doe"                 , customer.LastName );
 			Assert.Equal   ("john.doe@example.com", customer.Email    );

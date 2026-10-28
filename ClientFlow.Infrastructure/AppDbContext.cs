@@ -37,6 +37,8 @@ namespace ClientFlow.Infrastructure
 			modelBuilder.Entity<Customer>(entity =>
 			{
 				entity.HasKey(x => x.Id);
+				entity.Property(x => x.Id).UseIdentityByDefaultColumn();
+				entity.Property(x => x.CustomerId).IsRequired();
 				entity.Property(x => x.FirstName).HasMaxLength(100).IsRequired();
 				entity.Property(x => x.LastName).HasMaxLength(100).IsRequired();
 				entity.Property(x => x.Email).HasMaxLength(254).IsRequired();
@@ -48,6 +50,8 @@ namespace ClientFlow.Infrastructure
 			modelBuilder.Entity<User>(entity =>
 			{
 				entity.HasKey(x => x.Id);
+				entity.Property(x => x.Id).UseIdentityByDefaultColumn();
+				entity.Property(x => x.UserId).IsRequired();
 				entity.Property(x => x.Email).HasMaxLength(254).IsRequired();
 				entity.Property(x => x.PasswordHash).HasMaxLength(256).IsRequired();
 				entity.Property(x => x.Role).IsRequired();

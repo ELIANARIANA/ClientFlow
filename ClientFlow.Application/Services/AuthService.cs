@@ -63,7 +63,7 @@ namespace ClientFlow.Application.Services
 
 			return new RegisterResponse
 			{
-				Id        = user.Id,
+				UserId    = user.UserId,
 				Email     = user.Email,
 				Role      = user.Role,
 				CreatedAt = user.CreatedAt,

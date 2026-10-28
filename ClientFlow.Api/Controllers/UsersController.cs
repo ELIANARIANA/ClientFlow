@@ -48,7 +48,7 @@ namespace ClientFlow.Api.Controllers
 
 			var response = await _userService.AddUserAsync(request, CancellationToken.None);
 
-			_logger.LogInformation($"User with ID: {response.Id} created successfully.");
+			_logger.LogInformation($"User with ID: {response.UserId} created successfully.");
 
 			return Ok(new { Message = "User created successfully.", AddUserResponse = response });
 		}
