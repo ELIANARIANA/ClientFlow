@@ -1,11 +1,9 @@
-﻿using System.Net.Mail;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 
 using ClientFlow.Application.Customers;
 using ClientFlow.Application.DTOs.Customer;
 using ClientFlow.Application.Exceptions;
-using ClientFlow.Domain.Entities;
 using ClientFlow.Domain.Enums;
 
 namespace ClientFlow.Api.Controllers
