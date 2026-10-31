@@ -1,11 +1,13 @@
-﻿namespace ClientFlow.Application.DTOs.User
+﻿using ClientFlow.Domain.Enums;
+
+namespace ClientFlow.Application.DTOs.User
 {
 	public class GetUsersResponse
 	{
-		public Guid UserId { get; set; }
-		public string Email { get; set; }
-		public int Role { get; set; }
-		public DateTimeOffset CreatedAt { get; set; }
+		public Guid UserId               { get; set; }
+		public string Email              { get; set; } = string.Empty;
+		public int Role                  { get; set; } = (int)UserRole.None;
+		public DateTimeOffset CreatedAt  { get; set; }
 		public DateTimeOffset? UpdatedAt { get; set; }
 	}
 }
