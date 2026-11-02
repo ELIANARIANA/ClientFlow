@@ -1,6 +1,9 @@
 CLIENTFLOW - CHANGE HISTORY
 ===========================
 
+[2026-11-02]
+	- Initial ClientFlow.Web Anguler project
+
 [2026-11-01]
 	- ClientFlow.infrastructure: remove all migrations and create new 0.1.0 version
 		migration
