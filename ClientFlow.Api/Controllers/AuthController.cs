@@ -37,7 +37,6 @@ namespace ClientFlow.Api.Controllers
 		/// </summary>
 		/// <param name="request"></param>
 		/// <param name="cancellationToken"></param>
-		/// <returns></returns>
 		[NonAction]
 		[AllowAnonymous]
 		[HttpPost("register")]
@@ -53,7 +52,6 @@ namespace ClientFlow.Api.Controllers
 		/// </summary>
 		/// <param name="request"></param>
 		/// <param name="cancellationToken"></param>
-		/// <returns></returns>
 		[AllowAnonymous]
 		[HttpPost("Login")]
 		public async Task<ActionResult<LoginResponse>> Login(LoginRequest request, CancellationToken cancellationToken)
