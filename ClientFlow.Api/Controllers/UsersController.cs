@@ -53,10 +53,7 @@ namespace ClientFlow.Api.Controllers
 			return Ok(new { Message = "User created successfully.", AddUserResponse = response });
 		}
 
-		/// <summary>
-		/// Gets a list of all users.
-		/// </summary>
-		/// <returns></returns>
+		/// <summary> Gets a list of all users. </summary>
 		[HttpGet]
 		public async Task<IActionResult> GetUsers()
 		{
