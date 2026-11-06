@@ -1,6 +1,10 @@
 CLIENTFLOW - CHANGE HISTORY
 ===========================
 
+[2026-11-06]
+	- ClientFlow.Web - add dev proxy for ng serve to redirect API calls
+		to ClientFlow.Api
+
 [2026-11-02]
 	- Initial ClientFlow.Web Anguler project
 
