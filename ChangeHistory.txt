@@ -2,6 +2,7 @@ CLIENTFLOW - CHANGE HISTORY
 ===========================
 
 [2026-11-07]
+	- ClientFlow.Web - add Shell layout with sidebar navigation
 	- ClientFlow.Web - add LoginComponent and LoginService to handle user login
 
 [2026-11-06]

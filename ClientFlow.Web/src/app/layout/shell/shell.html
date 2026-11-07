@@ -1,0 +1,20 @@
+<div class="shell">
+    <aside class="sidebar">
+        <div class="brand"></div>
+        
+        <nav>
+            @for (item of navItems; track item.path) {
+                <a [routerLink]="item.path" routerLinkActive="active">
+                    <span class="icon">{{ item.icon }}</span>
+                    {{ item.label }}
+                </a>
+            }
+        </nav>
+
+        <button class="logout" (click)="logout()">logout</button>
+    </aside>
+
+    <main class="content">
+        <router-outlet />
+    </main>
+</div>
