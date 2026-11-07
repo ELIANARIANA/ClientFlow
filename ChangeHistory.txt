@@ -1,6 +1,9 @@
 CLIENTFLOW - CHANGE HISTORY
 ===========================
 
+[2026-11-07]
+	- ClientFlow.Web - add LoginComponent and LoginService to handle user login
+
 [2026-11-06]
 	- ClientFlow.Web - add dev proxy for ng serve to redirect API calls
 		to ClientFlow.Api
