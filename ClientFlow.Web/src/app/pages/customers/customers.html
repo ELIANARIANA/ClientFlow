@@ -1,0 +1,37 @@
+<div class="header">
+    <h1>Customers</h1>
+    <button (click)="load()">Load</button>
+</div>
+
+@if (loading()) {
+    <p>Loading customers...</p>
+} @else if (error()) {
+    <div class="error" role="alert">{{ error() }}</div>
+} @else if (customers().length === 0) {
+    <p>No customers available.</p>
+} @else {
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>E-Mail</th>
+                <th>Phone</th>
+                <th>Company name</th>
+                <th>Created at</th>
+                <th>Updated at</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (customer of customers(); track customer.id) {
+                <tr>
+                    <td>{{ customer.firstName }} {{ customer.lastName }}</td>
+                    <td>{{ customer.email }}</td>
+                    <td>{{ customer.phone ?? '-' }}</td>
+                    <td>{{ customer.companyName ?? '-' }}</td>
+                    <td>{{ customer.createdAt | date: 'dd.MM.yyyy HH:mm' }}</td>
+                    <td>{{ customer.updatedAt | date: 'dd.MM.yyyy HH:mm' }}</td>
+                </tr>
+                }
+        </tbody>
+    </table>
+}

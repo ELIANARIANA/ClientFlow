@@ -1,6 +1,9 @@
 CLIENTFLOW - CHANGE HISTORY
 ===========================
 
+[2026-11-08]
+	- ClientFlow.Web - add customer list page with API service
+
 [2026-11-07]
 	- ClientFlow.Web - add Shell layout with sidebar navigation
 	- ClientFlow.Web - add LoginComponent and LoginService to handle user login
