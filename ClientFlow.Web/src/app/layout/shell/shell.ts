@@ -14,7 +14,7 @@ export class Shell {
 
   readonly navItems = [
     { label: "Dashboard", path: '/dashboard', icon: '📊'},
-    { label: "Customers", path: '/customers', icon: '📊'},
+    { label: "Customers", path: '/customers', icon: '👥'},
   ];
 
   logout(): void {
