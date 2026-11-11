@@ -19,6 +19,7 @@
                 <th>Company name</th>
                 <th>Created at</th>
                 <th>Updated at</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -30,6 +31,15 @@
                     <td>{{ customer.companyName ?? '-' }}</td>
                     <td>{{ customer.createdAt | date: 'dd.MM.yyyy HH:mm' }}</td>
                     <td>{{ customer.updatedAt | date: 'dd.MM.yyyy HH:mm' }}</td>
+                    <td class="actions">
+                        <button
+                          class="btn danger"
+                          (click)="deleteCustomer(customer)"
+                          [disabled]="deletingId() === customer.customerId"
+                        >
+                          {{ deletingId() === customer.customerId ? '...' : 'Delete'}}
+                        </button>
+                    </td>
                 </tr>
                 }
         </tbody>

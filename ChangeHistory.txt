@@ -1,6 +1,9 @@
 CLIENTFLOW - CHANGE HISTORY
 ===========================
 
+[2026-11-11]
+	- ClientFlow.Web - add delete action to customer list
+
 [2026-11-08]
 	- ClientFlow.Web - add customer list page with API service
 

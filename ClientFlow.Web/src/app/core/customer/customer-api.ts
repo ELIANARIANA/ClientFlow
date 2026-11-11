@@ -11,4 +11,8 @@ export class CustomerApi {
     getCustomers(): Observable<Customer[]> {
         return this.http.get<Customer[]>(`${environment.apiUrl}/Customers`);
     }
+
+    deleteCustomer(customerId: string): Observable<void> {
+        return this.http.delete<void>(`${environment.apiUrl}/Customers/${customerId}`)
+    }
 }
