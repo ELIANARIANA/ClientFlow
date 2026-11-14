@@ -43,9 +43,12 @@ namespace ClientFlow.Infrastructure.Repositories
 			if (existingCustomer == null)
 				return null;
 
-			customer.CreatedAt = existingCustomer.CreatedAt;
-
-			_context.Entry(existingCustomer).CurrentValues.SetValues(customer);
+			existingCustomer.FirstName   = customer.FirstName;
+			existingCustomer.LastName    = customer.LastName;
+			existingCustomer.Email       = customer.Email;
+			existingCustomer.Phone       = customer.Phone;
+			existingCustomer.CompanyName = customer.CompanyName;
+			existingCustomer.UpdatedAt   = DateTimeOffset.UtcNow;
 
 			await _context.SaveChangesAsync();
 			return customer;

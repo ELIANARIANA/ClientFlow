@@ -1,6 +1,10 @@
 CLIENTFLOW - CHANGE HISTORY
 ===========================
 
+[2026-11-14]
+	- ClientFlow.Infrastructure - CustomerRepository - UpdateAsync(): fix load
+		entity before applying changes
+
 [2026-11-11]
 	- ClientFlow.Web - add delete action to customer list
 
