@@ -4,6 +4,7 @@ import { Dashboard } from './pages/dashboard/dashboard';
 import { Login } from './pages/login/login';
 import { Shell } from './layout/shell/shell';
 import { Customers } from './pages/customers/customers';
+import { CustomerForm } from './pages/customer-form/customer-form/customer-form';
 
 export const routes: Routes = [
   { path: 'login', component: Login },
@@ -15,6 +16,7 @@ export const routes: Routes = [
       { path: 'dashboard', component: Dashboard },
       { path: 'customers', component: Customers },
       { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
+      { path: 'customers/:id/edit', component: CustomerForm },
     ],
   },
   { path: '**', redirectTo: '' },

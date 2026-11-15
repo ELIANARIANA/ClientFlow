@@ -1,6 +1,9 @@
 CLIENTFLOW - CHANGE HISTORY
 ===========================
 
+[2026-11-15]
+	- ClientFlow.Web - add customer edit form with validation and update action
+
 [2026-11-14]
 	- ClientFlow.Infrastructure - CustomerRepository - UpdateAsync(): fix load
 		entity before applying changes

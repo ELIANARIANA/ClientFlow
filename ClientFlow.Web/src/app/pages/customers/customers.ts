@@ -1,7 +1,7 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { CustomerApi } from '../../core/customer/customer-api';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Customer } from '../../models/customer';
+import { Customer, CustomerRequest } from '../../models/customer';
 import { DatePipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
