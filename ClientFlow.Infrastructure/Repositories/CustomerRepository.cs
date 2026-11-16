@@ -26,7 +26,7 @@ namespace ClientFlow.Infrastructure.Repositories
 
 		public async Task<List<Customer>> GetAsync()
 		{
-			return await _context.Customers.ToListAsync();
+			return await _context.Customers.OrderByDescending(x => x.CreatedAt).ToListAsync();
 		}
 
 		public async Task<Customer> AddAsync(Customer customer)

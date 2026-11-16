@@ -1,6 +1,10 @@
 CLIENTFLOW - CHANGE HISTORY
 ===========================
 
+[2016-11-16]
+	- ClientFlow.infrastructure - CustomerRepository - GetAsync(): sort customers
+		by created date descending
+
 [2026-11-15]
 	- ClientFlow.Web - add customer edit form with validation and update action
 
