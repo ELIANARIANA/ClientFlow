@@ -1,6 +1,9 @@
 CLIENTFLOW - CHANGE HISTORY
 ===========================
 
+[2026-11-19]
+	- ClientFlow.Web - add search filter to customer list
+
 [2016-11-16]
 	- ClientFlow.infrastructure - CustomerRepository - GetAsync(): sort customers
 		by created date descending

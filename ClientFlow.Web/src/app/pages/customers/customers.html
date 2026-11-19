@@ -10,6 +10,18 @@
 } @else if (customers().length === 0) {
     <p>No customers available.</p>
 } @else {
+    <div class="toolbar">
+        <label class="search">
+            Search:
+            <input
+            type="search"
+            placeholder="Name, E-Mail, Company …"
+            [value]="search()"
+            (input)="onSearch($event)"
+            />
+        </label>
+    </div>
+
     <table>
         <thead>
             <tr>
@@ -23,7 +35,7 @@
             </tr>
         </thead>
         <tbody>
-            @for (customer of customers(); track customer.id) {
+            @for (customer of filtered(); track customer.id) {
                 <tr>
                     <td>{{ customer.firstName }} {{ customer.lastName }}</td>
                     <td>{{ customer.email }}</td>
