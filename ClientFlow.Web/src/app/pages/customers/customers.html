@@ -22,6 +22,14 @@
         </label>
     </div>
 
+    <div class="toolbar">
+        @if (isFiltered()) {
+            {{ filtered().length }} / {{ customers().length }} entries
+        } @else {
+            {{ customers().length }} entries
+        }
+    </div>
+
     <table>
         <thead>
             <tr>

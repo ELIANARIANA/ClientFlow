@@ -21,6 +21,7 @@ export class Customers implements OnInit {
   readonly deletingId = signal<string | null>(null);
   readonly search = signal('');
 
+  readonly isFiltered = computed(() => this.search().trim() !== '');
   readonly filtered = computed(() => {
     const term = this.search().trim().toLowerCase();
     const list = this.customers();

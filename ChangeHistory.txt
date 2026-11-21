@@ -1,6 +1,9 @@
 CLIENTFLOW - CHANGE HISTORY
 ===========================
 
+[2026-11-21]
+	- ClientFlow.Web - add entries count to customer list
+
 [2026-11-19]
 	- ClientFlow.Web - add search filter to customer list
 
